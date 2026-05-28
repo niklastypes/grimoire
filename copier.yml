@@ -1,0 +1,65 @@
+# copier.yml
+_min_copier_version: "9.0.0"
+_templates_suffix: .jinja
+_exclude:
+  # defaults (overridden when _exclude is set)
+  - copier.yaml
+  - copier.yml
+  - "~*"
+  - "*.py[co]"
+  - __pycache__
+  - .git
+  - .DS_Store
+  - .svn
+  # project-specific
+  - notes
+  - CLAUDE.md
+  - README.md
+  - LICENSE
+  - docs
+
+# --- Questions ---
+
+project_name:
+  type: str
+  help: What is your project name?
+
+project_type:
+  type: str
+  help: What kind of creative project is this?
+  choices:
+    TTRPG Campaign: ttrpg
+    Video Game: video-game
+    Generic Worldbuilding: generic
+  default: ttrpg
+
+project_mode:
+  type: str
+  help: How does your world relate to existing source material?
+  choices:
+    "Original — build a world entirely from scratch": original
+    "Existing (faithful) — staying true to an existing universe's canon (requires source material)": existing-faithful
+    "Existing (adapted) — inspired by an existing universe, with your own spin (requires source material)": existing-adapted
+  default: original
+
+genre:
+  type: str
+  help: What genre is your project?
+  choices:
+    Fantasy: fantasy
+    Sci-Fi: sci-fi
+    Noir: noir
+    Horror: horror
+    Custom: custom
+  default: fantasy
+
+include_genre_css:
+  type: bool
+  help: Include genre-matched CSS styling for your vault?
+  default: true
+  when: "{{ genre != 'custom' }}"
+
+include_sources:
+  type: bool
+  help: Include a sources/ folder for reference material?
+  default: "{{ project_mode != 'original' }}"
