@@ -13,7 +13,6 @@ _exclude:
   - .svn
   # project-specific
   - notes
-  - CLAUDE.md
   - LICENSE
   - docs
 
