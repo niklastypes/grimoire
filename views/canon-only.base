@@ -1,0 +1,15 @@
+filters:
+  and:
+    - 'canon == true'
+
+properties:
+  type:
+    displayName: Type
+  status:
+    displayName: Status
+  source:
+    displayName: Source
+
+views:
+  - type: table
+    name: Canon Only

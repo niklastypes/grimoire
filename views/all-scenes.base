@@ -1,0 +1,17 @@
+filters:
+  and:
+    - 'type == "scene"'
+
+properties:
+  status:
+    displayName: Status
+  act:
+    displayName: Act
+  order:
+    displayName: Order
+  location:
+    displayName: Location
+
+views:
+  - type: table
+    name: All Scenes
