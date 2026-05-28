@@ -1,0 +1,16 @@
+filters:
+  or:
+    - 'type == "session-prep"'
+    - 'type == "session-log"'
+
+properties:
+  type:
+    displayName: Type
+  session:
+    displayName: Session
+  date:
+    displayName: Date
+
+views:
+  - type: table
+    name: All Sessions

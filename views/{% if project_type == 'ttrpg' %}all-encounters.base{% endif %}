@@ -1,0 +1,17 @@
+filters:
+  and:
+    - 'type == "encounter"'
+
+properties:
+  encounter-type:
+    displayName: Type
+  session:
+    displayName: Session
+  difficulty:
+    displayName: Difficulty
+  location:
+    displayName: Location
+
+views:
+  - type: table
+    name: All Encounters
