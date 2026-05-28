@@ -1,0 +1,46 @@
+# {{ project_name }}
+
+> Conjured with [Grimoire](https://github.com/niklastypes/grimoire)
+
+## Vault Structure
+
+This vault follows Grimoire's **three-layer model**:
+
+### Layer 1: Canon
+The universe itself: entities, lore, and source material.
+
+- **`world/`** — characters, locations, items, factions, lore entries (flat, no subfolders)
+{% if include_sources %}- **`sources/`** — reference material from the source universe
+{% endif %}
+### Layer 2: Creative
+What you build on top of canon: plot and systems.
+
+- **`story/`** — scenes, narrative arcs, plot structure
+{% if project_type != 'generic' %}- **`mechanics/`** — game systems, rules, stat blocks
+{% endif %}
+{% if project_type == 'ttrpg' %}### Layer 3: Production
+What you bring to the table.
+
+- **`play/`** — session prep, session logs, encounters
+{% endif %}
+### Supporting Folders
+
+- **`templates/`** — note templates for creating new entities, scenes, sessions
+- **`views/`** — Bases views for browsing and filtering your notes
+- **`assets/`** — images, audio, and other media
+
+## Conventions
+
+- **Naming:** lowercase kebab-case for all files and folders
+- **Properties:** each note has a `type` property matching its template (character, location, item, faction, lore, scene, etc.)
+- **Canon:** the `canon` property (true/false) marks whether content is canonical to the universe
+- **Status:** `draft` → `ready` → `revealed` → `retired`
+- **Source:** attribution for where content originated (e.g., "self", "Hillenbrand 2018")
+- **GenAI:** `genai: true` flags AI-generated content
+
+## Getting Started
+
+1. Open this vault in Obsidian
+2. Start from `home.md` for an overview
+3. Use **Insert template** (Ctrl/Cmd+T) to create new notes from the `templates/` folder
+4. Browse your world using the views in `views/`

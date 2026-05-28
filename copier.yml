@@ -14,7 +14,6 @@ _exclude:
   # project-specific
   - notes
   - CLAUDE.md
-  - README.md
   - LICENSE
   - docs
 
