@@ -1,0 +1,15 @@
+filters:
+  and:
+    - 'type == "lore"'
+
+properties:
+  status:
+    displayName: Status
+  category:
+    displayName: Category
+  canon:
+    displayName: Canon
+
+views:
+  - type: table
+    name: All Lore

@@ -1,0 +1,15 @@
+filters:
+  and:
+    - 'type == "item"'
+
+properties:
+  status:
+    displayName: Status
+  held-by:
+    displayName: Held By
+  canon:
+    displayName: Canon
+
+views:
+  - type: table
+    name: All Items

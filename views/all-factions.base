@@ -1,0 +1,17 @@
+filters:
+  and:
+    - 'type == "faction"'
+
+properties:
+  status:
+    displayName: Status
+  alignment:
+    displayName: Alignment
+  leader:
+    displayName: Leader
+  canon:
+    displayName: Canon
+
+views:
+  - type: table
+    name: All Factions

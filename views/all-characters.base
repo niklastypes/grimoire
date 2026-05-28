@@ -1,0 +1,19 @@
+filters:
+  and:
+    - 'type == "character"'
+
+properties:
+  character-type:
+    displayName: Type
+  status:
+    displayName: Status
+  faction:
+    displayName: Faction
+  alive:
+    displayName: Alive
+  canon:
+    displayName: Canon
+
+views:
+  - type: table
+    name: All Characters

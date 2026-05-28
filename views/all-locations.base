@@ -1,0 +1,17 @@
+filters:
+  and:
+    - 'type == "location"'
+
+properties:
+  status:
+    displayName: Status
+  district:
+    displayName: District
+  parent-location:
+    displayName: Parent
+  canon:
+    displayName: Canon
+
+views:
+  - type: table
+    name: All Locations
