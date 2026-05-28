@@ -1,0 +1,46 @@
+# World Primer — {{ project_name }}
+
+> This document is your players' introduction to the world. Share it before Session 1 so everyone starts on the same page.
+
+## The World
+{% if genre == 'fantasy' %}
+*A world of magic, myth, and ancient powers. Kingdoms rise and fall, and the old ways still hold sway in forgotten corners of the map.*
+{% elif genre == 'sci-fi' %}
+*A future shaped by technology, ambition, and the vastness of space. Humanity has reached beyond its cradle, but not all frontiers are friendly.*
+{% elif genre == 'noir' %}
+*A world of shadows, secrets, and moral compromise. Trust is currency, and everyone is spending more than they have.*
+{% elif genre == 'horror' %}
+*Something is wrong. The world looks familiar on the surface, but underneath, things move that shouldn't. Not everything that watches you has eyes.*
+{% else %}
+*Describe your world here. What makes it unique? What do your players need to know before they step in?*
+{% endif %}
+
+<!-- Replace the placeholder above with your own setting overview -->
+
+## Factions
+
+Who holds power? Who fights for it? List the key groups your players should know about.
+
+-
+
+## Tone & Feel
+
+What kind of story is this? What themes should players expect? Any content boundaries?
+
+-
+{% if project_mode != 'original' %}
+
+## Source Material
+
+This world is based on existing source material. Key references:
+
+-
+
+> Players don't need to have read the sources. This primer covers what your character would know.
+{% endif %}
+
+## What Your Character Knows
+
+Common knowledge in this world. Things every resident would take for granted.
+
+-
