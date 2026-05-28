@@ -15,6 +15,10 @@ _exclude:
   - notes
   - LICENSE
   - docs
+  - .github
+  - release-please-config.json
+  - .release-please-manifest.json
+  - CHANGELOG.md
 
 # --- Questions ---
 
