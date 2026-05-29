@@ -6,9 +6,9 @@ Same philosophy as [Kindling](https://github.com/niklastypes/kindling) (Python p
 
 ## Current Focus
 
-**Layer 1 Ready (Source Ingestion)**: Make the vault a real worldbuilding tool. Agent scaffold (kepano skills + grimoire overlay + ingest-source command) so you can scaffold a vault, ingest source material, and get structured entities in `world/`. Validated against Hologrammatica and Prisma.
+**Layer 1 Ready (Source Ingestion)**: shipped. Vault includes agent scaffold (kepano skills + grimoire overlay + ingest-source command) so you can ingest source material and get structured entities in `world/`.
 
-Earliest Testable (Skateboard) shipped as v0.2.0. See [notes/roadmap.md](./notes/roadmap.md) for the full staged plan.
+See [notes/roadmap.md](./notes/roadmap.md) for the full staged plan.
 
 **Prioritization**: Layer 1 first, Layer 2 second, Layer 3 last. Functionality over polish.
 
@@ -28,6 +28,10 @@ For video games: Layer 3 is a separate code project (e.g. Godot). The vault stop
 
 ```
 {{project_name}}/
+├── .obsidian/          ← core plugin config (Templates, Bases, Graph View, etc.)
+├── .claude/
+│   ├── skills/         ← kepano base + grimoire-overlay + <project>-canon skeleton
+│   └── commands/       ← ingest-source (more commands planned)
 ├── world/              ← Layer 1a: entities + lore (flat, no subfolders)
 ├── sources/            ← Layer 1b: source material (conditional)
 ├── story/              ← Layer 2a: narrative work (always)
@@ -40,9 +44,9 @@ For video games: Layer 3 is a separate code project (e.g. Godot). The vault stop
 ├── templates/          ← flat, one per type
 ├── views/              ← Bases .base view files
 ├── home.md             ← dashboard with Bases embeds
-├── world-primer.md     ← Layer 1 setup primer
-├── style-guide.md      ← visual + tonal identity (Earliest Usable)
-├── README.md           ← "Conjured with Grimoire" attribution
+├── world-primer.md     ← player handout (TTRPG only)
+├── CLAUDE.md           ← vault governance schema for AI agents
+├── README.md           ← "Conjured with Grimoire" + getting started
 └── .gitignore          ← Obsidian local-state exclusions
 ```
 
@@ -54,31 +58,33 @@ Lean by design. Player-specific details are filled post-generation.
 |---|---|---|---|
 | `project_name` | str | | Vault root folder name |
 | `project_type` | choice | ttrpg | `ttrpg` / `video-game` / `generic`. Drives Layer 3 and `mechanics/` |
-| `project_mode` | choice | original | `original` / `existing-universe` / `adapted-original`. Drives `include_sources` |
+| `project_mode` | choice | original | `original` / `existing-faithful` / `existing-adapted` |
 | `genre` | choice | fantasy | fantasy, sci-fi, noir, horror, custom |
-| `genre_theme` | choice | neutral | cyberpunk, fantasy, noir, horror, sci-fi, neutral, custom |
-| `include_sources` | bool | auto | Auto-true for existing-universe/adapted-original |
+| `include_genre_css` | bool | true | Only asked when genre != custom (CSS deferred, captures intent) |
+| `include_sources` | bool | auto | Derived from project_mode, never shown to user |
 
 ## Design Decisions
 
 | Decision | Choice | Why |
 |---|---|---|
 | Templating | **Copier** | `copier update` pulls improvements into existing vaults |
+| Repo layout | **`_subdirectory: template`** | Separates template content from repo metadata; enables dot directories (.obsidian/, .claude/) |
 | Structure | **Three-layer + flat where it matters** | Universal across media; `world/` and `templates/` flat for graph navigation |
 | Canon marker | **`canon: true/false` property + `source` attribution** | Bases-queryable; downstream consumers filter for canon-only |
-| Character system | **Unified template** | Single `character.md` for PCs/NPCs/any medium; `type` differentiates |
-| Properties | **Lean frontmatter + body tables** | Dynamic/queryable in frontmatter; rich detail in body |
+| Character system | **Unified template** | Single `character.md` for PCs/NPCs/any medium; `character-type` differentiates |
+| Properties | **Lean frontmatter + body sections** | Dynamic/queryable in frontmatter; rich detail in body |
 | View engine | **Bases** | Core plugin; no Dataview dependency |
-| Plugin strategy | **Core first, community second, custom third** | Javalent stack for TTRPG at Earliest Lovable |
-| Visual style | **Wiki-entry infobox** via CSS snippet | Fandom Wiki style, `[!infobox]` callout |
+| Plugin strategy | **Core first, community second, custom third** | Javalent stack for TTRPG deferred to Layer 3 Ready |
+| Agent scaffold | **kepano base + grimoire overlay + per-vault project skill** | Three-tier skill stack, each updatable independently |
 | Naming | **lowercase kebab-case** | All folders and files |
 | Language | **English structure, multilingual content** | Vault structure in English; content in any language |
 | Generated vault | **Zero Python dependency** | Python OK template-side only |
+| Dot directories | **`--trust` required** | Copier security feature; users prompted on first copy |
 
 ## Key Properties
 
-- `type`: `pc | npc | location | item | faction | lore | scene | session-prep | session-log | encounter`
-- `status`: `draft | ready | revealed | retired` (entities), `active` (PCs), `in-progress | completed` (project)
+- `type`: `character | location | item | faction | lore | scene | session-prep | session-log | encounter`
+- `status`: `draft | ready | revealed | retired`
 - `canon`: `true | false` (default true). Is this canonical to the universe?
 - `source`: attribution string (`"Hillenbrand 2018"`, `"self"`)
 - `genai`: `true | false`. AI-generated content provenance flag.
@@ -87,27 +93,31 @@ Lean by design. Player-specific details are filled post-generation.
 
 ```
 grimoire/                            (this repo)
-├── copier.yml                       # questions + config (excluded from copy)
-├── README.md                        # template repo readme (excluded from copy)
-├── CLAUDE.md                        # this file (excluded from copy)
-├── LICENSE                          # MIT (excluded from copy)
-├── notes/                           # brainstorm + research + roadmap (excluded from copy)
-│
-│   ── template files below are copied to generated vault ──
-│
-├── world/
-├── sources/                         # conditional
-├── story/
-├── mechanics/                       # conditional
-├── play/                            # conditional
-├── assets/
-├── templates/
-├── views/
-├── home.md.jinja
-├── world-primer.md.jinja
-├── README.md.jinja
-├── .gitignore.jinja
-└── .copier-answers.yml.jinja
+├── copier.yml                       # questions + config
+├── template/                        # _subdirectory: everything below is copied
+│   ├── .obsidian/                   # core plugin config
+│   ├── .claude/
+│   │   ├── skills/                  # kepano (vendored) + grimoire-overlay + project-canon
+│   │   └── commands/                # ingest-source
+│   ├── world/
+│   ├── sources/                     # conditional
+│   ├── story/
+│   ├── mechanics/                   # conditional
+│   ├── play/                        # conditional
+│   ├── assets/
+│   ├── templates/
+│   ├── views/
+│   ├── home.md.jinja
+│   ├── world-primer.md.jinja        # conditional (TTRPG)
+│   ├── CLAUDE.md.jinja
+│   ├── README.md.jinja
+│   ├── .gitignore.jinja
+│   └── .copier-answers.yml.jinja
+├── README.md                        # template repo readme
+├── CLAUDE.md                        # this file
+├── LICENSE                          # MIT
+├── notes/                           # brainstorm + research + roadmap
+└── docs/                            # specs + plans
 ```
 
 ## V1 Validation Targets
@@ -120,7 +130,7 @@ grimoire/                            (this repo)
 - **Conventional commits** (`feat:`, `fix:`, `docs:`, `chore:`)
 - **Atomic commits**, one logical change per commit
 - **Branch naming**: `feat/add-character-template`, `fix/handle-empty-frontmatter`
-- **Test generation** after structural changes: `copier copy --defaults . /tmp/test-vault`
+- **Test generation** after structural changes: `copier copy --trust --vcs-ref HEAD --defaults --data project_name=test . /tmp/test-vault`
 - **Never commit unless asked**
 - **`notes/`** is in-flux brainstorm/research (read for deeper context)
 
@@ -133,4 +143,4 @@ grimoire/                            (this repo)
 - [notes/brainstorm/integrations.md](./notes/brainstorm/integrations.md): creative loop, downstream consumers
 - [notes/brainstorm/ruleset.md](./notes/brainstorm/ruleset.md): TTRPG-specific HTBAH mechanics
 - [notes/research.md](./notes/research.md): Obsidian plugin landscape, v1 plugin selection
-- [notes/roadmap.md](./notes/roadmap.md): staged build plan (ET/EU/EL)
+- [notes/roadmap.md](./notes/roadmap.md): staged build plan
