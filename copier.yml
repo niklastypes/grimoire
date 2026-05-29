@@ -13,6 +13,9 @@ _exclude:
   - .DS_Store
   - .svn
 
+_skip_if_exists:
+  - ".claude/skills/*-canon/"
+
 # --- Questions ---
 
 project_name:
