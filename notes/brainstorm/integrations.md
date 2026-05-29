@@ -69,7 +69,9 @@ Source → canon → creative → played → captured → new stories. Each arti
 
 ### Remembrance
 
-Reads the Grimoire vault to generate audio content in the universe.
+Reads the Grimoire vault to generate audio content in the universe. **The seam between Grimoire and Remembrance is a Comet** (Empyrean's term for a compiled inter-star artifact): the vault is compiled into an immutable, indexed, schema-versioned pack that the Remembrance engine consumes. The compile step does graph normalization, community detection, summarization, and embedding once; query-time stays fast.
+
+This means Remembrance never reads the vault directly at query time. It reads a Comet. Vault changes trigger a recompile; the Remembrance engine consumes the new Comet.
 
 **Modes:**
 
@@ -77,7 +79,16 @@ Reads the Grimoire vault to generate audio content in the universe.
 - **Adaptation mode**: reads `world/` + `sources/` + `story/` + `mechanics/`. Generates audio relevant to the user's specific adaptation (e.g., "side stories in our Hologrammatica campaign world").
 - **Session-aware mode (future)**: reads everything plus Clairvoyance artifacts. Generates "stories from our played campaign" — narrating what happened at the table as in-universe lore.
 
-For Niklas's case: he's a super-fan of Lightbringer, builds a perfect Layer 1 Lightbringer vault for Prisma. Remembrance reads it and starts generating canon Lightbringer stories he can consume. Then he layers a Prisma-specific story on top (Layer 2), and Remembrance shifts to generating stories in *that* version of the universe.
+**Vault-side conventions that matter to Remembrance:**
+
+- `canon: true | false` — gates the canon-only mode (see [templates.md](./templates.md#properties-system))
+- `status: revealed | ready | retired` — gates audience-safe vs creator-only content
+- `source: "..."` — attribution carried through into generated episode metadata
+- `genai: true` — distillation flag; Remembrance can down-weight AI-distilled notes during retrieval to avoid LLM-echo
+- **`type: moc`** (optional, see [templates.md](./templates.md#optional-moc-layer)) — recognized by Remembrance as an authoritative hand-authored summary for the entities in `covers:`. Used as the community-level summary during Comet compile instead of LLM-generating one. MOCs are optional in Grimoire (Bases handle overview views by default); when present, they upgrade the quality of Remembrance's global-query answers ("give me a take on the political landscape of the Chromeria").
+- The character entry shape (`portrait:`, voice traits, faction, status) seeds Remembrance's character voice roster automatically.
+
+For Niklas's case: he's a super-fan of Lightbringer, builds a perfect Layer 1 Lightbringer vault for Prisma. Remembrance compiles it into a Comet and starts generating canon Lightbringer stories he can consume. Then he layers a Prisma-specific story on top (Layer 2), recompiles, and Remembrance shifts to generating stories in *that* version of the universe.
 
 ### Clairvoyance
 

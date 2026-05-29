@@ -35,7 +35,7 @@ No template for `mechanics/` in v1 — that folder is free-form, users populate 
 
 ```yaml
 ---
-type: character | location | item | faction | lore
+type: character | location | item | faction | lore | moc
 status: draft | ready | revealed | retired
 canon: true                  # canonical to the universe? Default true.
 source: ""                   # attribution: "Hillenbrand 2018", "Lightbringer Wiki", "self"
@@ -45,6 +45,23 @@ genai: false                 # is this entity's primary asset AI-generated?
 ```
 
 The `canon: true | false` flag is the key data point for downstream consumers (Remembrance filtering for "canon stories" reads `canon: true` only). Default `true`; users explicitly mark `canon: false` for project-specific inventions that don't fit the source's canon.
+
+### Optional MOC Layer
+
+`type: moc` (Map of Content) is an **optional** type that marks a note as a hand-authored summary for a cluster of related entities, rather than an entity itself. MOCs are not the default authoring pattern in Grimoire (Bases handle overview views; see below), but they are recognized when present.
+
+```yaml
+---
+type: moc
+covers: ["[[karris-white-oak]]", "[[blackguard]]", "[[color-prince]]", ...]
+canon: true
+---
+```
+
+- **`covers:`** lists the entities the MOC summarizes. The note body is the author's summary of how those entities relate / what theme they share.
+- **Authoring posture**: MOCs are optional. If you write them, you get high-quality hand-authored summaries for those clusters. If you don't, Bases queries still give you overview views, and downstream consumers will fall back to other strategies.
+- **Downstream signal**: consumers like Remembrance (see [integrations.md](./integrations.md#remembrance)) recognize `type: moc` notes as authoritative summaries for the entities in `covers:`. They use them as community-level summaries during Comet compile instead of LLM-generating their own. This is the highest-quality summary signal available, because it carries authorial intent that no clustering algorithm can recover.
+- **When to write one**: when a cluster of entities forms a theme you'd want to gloss in one paragraph (e.g. "the Drafting magic system," "the political factions of the Chromeria," "the Erdtree's influence on the demigods"). Don't force them; let them emerge from worldbuilding.
 
 ### Optional Clue Layer
 
@@ -61,6 +78,7 @@ found-at: "[[location-name]]"
 - "All characters" → filter `type: character`, sort by faction
 - "Canon only" → filter `canon: true`
 - "My inventions" → filter `canon: false`
+- "All MOCs" → filter `type: moc`, columns: file, covers, status
 - "All clues" → filter `clue: true`, columns: file, type, links-to-secret, found-at, status
 - "Unrevealed clues" → filter `clue: true` + `status: ready`
 - "PCs" → filter `type: character` + `character-type: pc`
