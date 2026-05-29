@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/niklastypes/grimoire/compare/v0.3.0...v0.4.0) (2026-05-29)
+
+
+### Features
+
+* document type:moc convention for downstream consumers ([7235f5a](https://github.com/niklastypes/grimoire/commit/7235f5ac6d77db1f2070dd6bc42ef80597883e06))
+
 ## [0.3.0](https://github.com/niklastypes/grimoire/compare/v0.2.0...v0.3.0) (2026-05-29)
 
 
