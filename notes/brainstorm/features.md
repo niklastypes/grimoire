@@ -26,6 +26,22 @@
 - Curated timeline of source events
 - No enforced structure inside `sources/` — user organizes per source
 
+### Source Summaries (running story digest)
+
+Source chapters get long. Once entities have been extracted via `ingest-source`, the raw chapter shouldn't need to be re-read by downstream skills (`compose-scene`, vault gardener, etc.) or by Claude on later runs. We need a layered summary:
+
+1. **Per-source-note summary**, written into the source note itself by `ingest-source`. Compact (≤ ~200 words for a novel chapter): what happens, who appears, what changes, where it leaves off. Lives directly above or below the raw text in the source note. Generated at ingest time so the agent doesn't re-derive it later.
+2. **Running story digest**, one file per project (`sources/_digest.md` or similar). Updated additively at each ingest. Chronological, chapter-by-chapter one-liners plus an "as of source X" cumulative arc summary. The single artifact later skills load instead of the full source corpus.
+
+**Why:**
+- Layer-2 work (scene composition, session prep) needs story shape, not paragraph detail.
+- Re-reading 5,000-word chapters into context for every operation is slow and expensive.
+- A human GM rereading the vault three months later wants the digest, not the raw text.
+
+**Status:** v1 deliverable as part of `ingest-source` v2 (current `ingest-source` only extracts entities). Validate on Hologrammatica Ch. 1–5+ once chapters accumulate.
+
+See [scene-composition.md](scene-composition.md) for the Layer 2 consumer of this digest.
+
 ## Layer 2: Creative
 
 ### Narrative Work (`story/`)
@@ -33,6 +49,15 @@
 - Plot arcs, scenes, character arcs specific to your project
 - Universal across media: TTRPG campaign plot, novel chapter outlines, video game quest design, screenplay beat sheet
 - `scene.md` template carries this work; for TTRPG it's literal scenes, for video game it can be quest-narrative work, for novel it's chapter outlines
+
+### Scene & Session Composition (skills)
+
+Layer-2 sibling to Layer-1's `ingest-source`. Two skills:
+
+- **`compose-scene`** — turns canon (+ optional source slice, + optional user brief) into a table-ready scene note in `story/`. Two modes: adaptation (source-driven) and original (brainstorm-with-user). Always produces a vivid read-aloud Intro paragraph, a compact beat table, a per-NPC voice cheat with sample phrases, "what's off" friction handles, a refusal branch, hooks-out, and a GM-only worldbuilding-pflichtbeats checklist. Optionally emits a `.canvas` visualization and one or more in-world handouts in `play/`.
+- **`compose-session`** — bundles 2–5 scenes into a pacing-aware session, surfaces prep needs, produces a `session-prep` note.
+
+Design constraints captured separately because they're substantial — see [scene-composition.md](scene-composition.md). Key rule: bias toward at-a-glance GM cards (tables, quoted phrases, bullets) over prose. Validated empirically on Hologrammatica Ch. 1 → Szene 01.
 
 ### Systems Work (`mechanics/`)
 

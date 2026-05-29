@@ -31,6 +31,7 @@ The vault becomes a real worldbuilding tool. Scaffold a vault, ingest source mat
 - `.obsidian/` config: core plugins enabled, Templates folder pre-set, expanded `.gitignore`
 - `.claude/skills/`: kepano base (vendored, MIT), grimoire overlay, per-vault project skill skeleton
 - `ingest-source` command: handles narrative sources (novel chapters) and wiki-style sources (fandom wiki extracts), creates/updates entities in `world/`, manages `sources/` notes
+- `ingest-source` v2: writes a compact per-source summary into each source note + maintains a running story digest (`sources/_digest.md`) so downstream skills don't need to re-read raw chapters. See [brainstorm/features.md#source-summaries-running-story-digest](brainstorm/features.md#source-summaries-running-story-digest).
 - Upgraded vault `CLAUDE.md`: becomes the real schema (ingest rules, canon conventions, entity creation guidelines)
 
 ### Canon Quality
@@ -46,7 +47,8 @@ Keep Layer 1 consistent as content grows.
 ### Creative Workflow
 Build story and mechanics on top of canon.
 
-- Scene workflow improvements
+- `compose-scene` skill: turns canon + optional source slice into a table-ready scene note (Intro to read aloud, beat table, NPC voice cheat, refusal branch, hooks-out, GM-only worldbuilding checklist). Two modes: adaptation (source-driven) and original (brainstorm). Optionally emits `.canvas` + handouts in `play/`. Empirically validated on Hologrammatica Szene 01. See [brainstorm/scene-composition.md](brainstorm/scene-composition.md).
+- `compose-session` skill: bundles 2–5 scenes into a pacing-aware session, surfaces cross-scene prep needs, produces a `session-prep` note.
 - Mechanics templates/guidance for TTRPG (HTBAH) and video-game
 - `style-guide.md` auto-populated from genre (for GenAI asset consistency)
 - Canvas templates for relationship webs, faction maps, plot structures
