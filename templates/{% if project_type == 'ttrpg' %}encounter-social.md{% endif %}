@@ -16,3 +16,9 @@ tags: []
 ## Possible Outcomes
 
 ## Notes
+
+> [!tip]- Property Guide
+> - **encounter-type:** `social` (pre-filled)
+> - **session:** session number this encounter belongs to
+> - **location:** wikilink to the encounter location
+> - **characters:** list of wikilinks to characters involved

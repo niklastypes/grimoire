@@ -15,3 +15,8 @@ tags: []
 ## Consequences
 
 ## Notes
+
+> [!tip]- Property Guide
+> - **session:** session number (e.g. `1`, `2`, `3`)
+> - **date:** actual session date
+> - **scenes-played:** list of wikilinks to scenes that were played

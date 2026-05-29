@@ -19,3 +19,10 @@ tags: []
 ## Rewards
 
 ## Notes
+
+> [!tip]- Property Guide
+> - **encounter-type:** `combat` (pre-filled)
+> - **session:** session number this encounter belongs to
+> - **difficulty:** e.g. `easy`, `medium`, `hard`, `deadly`
+> - **location:** wikilink to the encounter location
+> - **characters:** list of wikilinks to characters involved

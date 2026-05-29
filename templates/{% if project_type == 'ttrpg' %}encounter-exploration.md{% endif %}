@@ -15,3 +15,8 @@ tags: []
 ## Rewards
 
 ## Notes
+
+> [!tip]- Property Guide
+> - **encounter-type:** `exploration` (pre-filled)
+> - **session:** session number this encounter belongs to
+> - **location:** wikilink to the encounter location
