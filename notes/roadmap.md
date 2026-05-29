@@ -2,6 +2,10 @@
 
 > Each stage tagged so `copier update` works from any point.
 
+## Prioritization Principle
+
+**Layer 1 first, Layer 2 second, Layer 3 last.** Functionality over polish. Each increment should deliver a testable vertical slice of real worldbuilding workflow, validated against Hologrammatica (TTRPG, adapted) and Prisma (video-game, adapted).
+
 ## Earliest Testable ✓ shipped v0.2.0 (2026-05-29)
 
 ### Bus Ticket ✓
@@ -11,44 +15,67 @@ Repo setup, LICENSE, copier.yml with three-layer question set, notes/ populated.
 Copier template generates the three-layer vault. Folder structure per project_type, all flat templates, `home.md` with real Bases views, `world-primer.md` for TTRPG players, `.gitignore`, attributed `README.md`, vault `CLAUDE.md` for AI agents, release-please workflow. Open in Obsidian, start writing.
 
 Notable changes from original plan:
-- `genre_theme` dropped (deferred to Earliest Usable with CSS)
+- `genre_theme` dropped (deferred to CSS polish milestone)
 - `include_sources` derived automatically from `project_mode` (no longer a visible question)
 - `include_genre_css` added (asked when genre != custom)
 - `world-primer.md` is player-facing (not a creator writing prompt), TTRPG-only
-- Vault `CLAUDE.md` added (basic version, improved at Earliest Lovable)
+- Vault `CLAUDE.md` added (basic version, improved later)
 - Templates use static infobox placeholders (no Dataview dependency)
 - All templates include collapsible property guides
 
-## Earliest Usable
+## Layer 1 Ready (next)
 
-### Scooter
-CSS snippets (infobox callout + genre themes), `.obsidian/` config (core plugins, pre-set Templates folder), auto-populated `style-guide.md`, conditional QA tooling (pre-commit, markdownlint), template-side validation/test-generation scripts, CI workflow.
+### Source Ingestion
+The vault becomes a real worldbuilding tool. Scaffold a vault, ingest source material, get structured entities in `world/`. Validated by ingesting the first chapters/wiki pages for Hologrammatica and Prisma.
 
-Note: release-please already shipped with the Skateboard.
+- `.obsidian/` config: core plugins enabled, Templates folder pre-set, expanded `.gitignore`
+- `.claude/skills/`: kepano base (vendored, MIT), grimoire overlay, per-vault project skill skeleton
+- `ingest-source` command: handles narrative sources (novel chapters) and wiki-style sources (fandom wiki extracts), creates/updates entities in `world/`, manages `sources/` notes
+- Upgraded vault `CLAUDE.md`: becomes the real schema (ingest rules, canon conventions, entity creation guidelines)
 
-- Slice: CSS snippets per genre (driven by `include_genre_css`)
-- Slice: .obsidian/ with core plugin config (Templates folder, Bases enabled)
-- Slice: style-guide.md auto-populated from genre defaults
-- Slice: QA scripts (Python, template-side only)
-- Slice: CI workflow (conventional commit validation)
+### Canon Quality
+Keep Layer 1 consistent as content grows.
 
-## Earliest Lovable
+- `lint-canon` command: property completeness, canon consistency checks
+- `audit-conflicts` command: surface contradictions across canon entries
+- Vault health scripts: orphan checks, property validation
+- Additional Bases views: clue tracking, unrevealed secrets, by-source attribution
 
-### Bicycle
-Community plugins evaluated and integrated per research.md. Vault health scripts. `copier update` validated on a real vault. `.claude/` agent scaffold shipped (kepano + grimoire-overlay + per-vault skill skeleton + slash commands). CLAUDE.md as the schema.
+## Layer 2 Ready (future)
 
-- Slice: Javalent TTRPG stack pre-configured (Dice Roller, Initiative Tracker, Leaflet, Fantasy Statblocks)
-- Slice: audio/soundboard plugin for TTRPG
-- Slice: vault health scripts
-- Slice: copier update validated (e.g. Hologrammatica gets a Grimoire update)
-- Slice: .claude/ agent scaffold + CLAUDE.md schema
-- Slice: end-of-project frozen-state pattern documented
+### Creative Workflow
+Build story and mechanics on top of canon.
+
+- Scene workflow improvements
+- Mechanics templates/guidance for TTRPG (HTBAH) and video-game
+- `style-guide.md` auto-populated from genre (for GenAI asset consistency)
+- Canvas templates for relationship webs, faction maps, plot structures
+
+## Layer 3 Ready (future, TTRPG-specific)
+
+### Session Play
+Run actual TTRPG sessions from the vault.
+
+- Javalent TTRPG stack pre-configured (Dice Roller, Initiative Tracker, Leaflet, Fantasy Statblocks)
+- Audio/soundboard plugin for immersion
+- Session management improvements
+- `world-primer.md` enhancements for player handouts
+
+## Polish (future, orthogonal)
+
+Can be done at any point, not blocking functionality.
+
+- CSS snippets (infobox callout + genre themes, driven by `include_genre_css`)
+- Full `.obsidian/` appearance config (theme, fonts)
+- QA tooling (pre-commit, markdownlint, CI workflow)
+- `copier update` validated on real vaults
+- End-of-project frozen-state pattern
 
 ## Beyond
 
-- Player-safe export (Layer 3 → HTML/PDF for players, filtered by status/canon)
+- Player-safe export (Quartz static site, filtered by status/canon)
 - AI chat in vault (Copilot for Obsidian or equivalent)
 - Vault Gardener nightly cron (adapted from Mikoshi pattern)
 - Downstream-consumer integration conventions (Remembrance, Tavern hookup)
 - Full Obsidian themes (beyond CSS snippets)
-- Novel / screenplay / board game project_types as explicit options
+- Novel / screenplay / board game project_types

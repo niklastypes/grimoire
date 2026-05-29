@@ -6,9 +6,11 @@ Same philosophy as [Kindling](https://github.com/niklastypes/kindling) (Python p
 
 ## Current Focus
 
-**Earliest Testable (Skateboard)**: Copier template generates the three-layer vault. Folder structure per project_type, all flat templates, Bases views, `home.md` dashboard, `world-primer.md`. Open in Obsidian, start writing.
+**Layer 1 Ready (Source Ingestion)**: Make the vault a real worldbuilding tool. Agent scaffold (kepano skills + grimoire overlay + ingest-source command) so you can scaffold a vault, ingest source material, and get structured entities in `world/`. Validated against Hologrammatica and Prisma.
 
-See [notes/roadmap.md](./notes/roadmap.md) for the full staged plan.
+Earliest Testable (Skateboard) shipped as v0.2.0. See [notes/roadmap.md](./notes/roadmap.md) for the full staged plan.
+
+**Prioritization**: Layer 1 first, Layer 2 second, Layer 3 last. Functionality over polish.
 
 ## The Three-Layer Model
 
