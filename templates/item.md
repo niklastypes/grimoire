@@ -13,11 +13,11 @@ found-at:
 ---
 
 > [!infobox]
-> # `= this.file.name`
-> **Held by:** `= this.held-by`
-> **Status:** `= this.status`
-> **Prop:** `= this.prop`
-> **Clue:** `= this.clue`
+> # Name
+> **Held by:**
+> **Status:**
+> **Prop:**
+> **Clue:**
 
 ## Description
 

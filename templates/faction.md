@@ -10,10 +10,10 @@ genai: false
 ---
 
 > [!infobox]
-> # `= this.file.name`
-> **Alignment:** `= this.alignment`
-> **Leader:** `= this.leader`
-> **Status:** `= this.status`
+> # Name
+> **Alignment:**
+> **Leader:**
+> **Status:**
 
 ## Description
 

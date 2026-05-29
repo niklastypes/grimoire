@@ -12,10 +12,10 @@ found-at:
 ---
 
 > [!infobox]
-> # `= this.file.name`
-> **Category:** `= this.category`
-> **Status:** `= this.status`
-> **Clue:** `= this.clue`
+> # Name
+> **Category:**
+> **Status:**
+> **Clue:**
 
 ## Description
 

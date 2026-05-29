@@ -10,10 +10,10 @@ genai: false
 ---
 
 > [!infobox]
-> # `= this.file.name`
-> **District:** `= this.district`
-> **Parent:** `= this.parent-location`
-> **Status:** `= this.status`
+> # Name
+> **District:**
+> **Parent:**
+> **Status:**
 
 ## Description
 

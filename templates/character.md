@@ -17,12 +17,12 @@ found-at:
 ---
 
 > [!infobox]
-> # `= this.file.name`
-> **Type:** `= this.character-type`
-> **Faction:** `= this.faction`
-> **Role:** `= this.role`
-> **Status:** `= this.status`
-> **Alive:** `= this.alive`
+> # Name
+> **Type:**
+> **Faction:**
+> **Role:**
+> **Status:**
+> **Alive:**
 
 ## Description
 
