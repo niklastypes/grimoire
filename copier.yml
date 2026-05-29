@@ -63,5 +63,5 @@ include_genre_css:
 
 include_sources:
   type: bool
-  help: Include a sources/ folder for reference material?
   default: "{{ project_mode != 'original' }}"
+  when: false
