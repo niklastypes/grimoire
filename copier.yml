@@ -57,6 +57,11 @@ include_genre_css:
   default: true
   when: "{{ genre != 'custom' }}"
 
+include_agent_scaffold:
+  type: bool
+  help: Include AI coding agent scaffold (.claude/ with skills and commands)?
+  default: true
+
 include_sources:
   type: bool
   default: "{{ project_mode != 'original' }}"

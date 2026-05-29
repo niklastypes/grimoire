@@ -45,9 +45,10 @@ What you bring to the table.
 3. Use **Insert template** (Ctrl/Cmd+T) to create new notes from the `templates/` folder
 4. Browse your world using the views in `views/`
 
+{% if include_agent_scaffold %}
 ## Using AI Assistants (optional)
 
-This vault includes a `.claude/` scaffold that teaches AI coding agents how to work with your world. This is entirely optional: everything works without AI.
+This vault includes a `.claude/` scaffold that teaches AI coding agents how to work with your world.
 
 To use it, open the vault directory in an AI coding agent such as [Claude Code](https://docs.anthropic.com/en/docs/claude-code), Codex, or OpenCode. The agent automatically picks up:
 
@@ -63,4 +64,5 @@ If you're adapting from existing source material, the `/ingest-source` command c
 ```
 
 You can also ingest source material manually: create notes in `sources/` for raw material, then create entity notes in `world/` using the templates.
+{% endif %}
 {% endif %}

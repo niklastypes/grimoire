@@ -52,9 +52,11 @@ All notes use frontmatter properties:
 - Set `genai: false` for human-written content, `true` for AI-generated.
 {% if include_sources %}
 ## Source Ingestion
-
+{% if include_agent_scaffold %}
 To ingest source material into this vault, use the `/ingest-source` command. The workflow:
-
+{% else %}
+To ingest source material into this vault:
+{% endif %}
 1. Source material (chapter, wiki page, reference) goes into `sources/` as a source note
 2. Entities are extracted and created/updated in `world/` using templates
 3. Existing entities are updated additively (never overwrite user edits)
@@ -62,6 +64,7 @@ To ingest source material into this vault, use the `/ingest-source` command. The
 
 When creating entities from source material, set `canon: true` and `source` to the attribution string. Set `genai: false` (the source is human-written, even if an agent does the extraction).
 {% endif %}
+{% if include_agent_scaffold %}
 ## Agent Scaffold
 
 This vault includes an agent scaffold in `.claude/`:
@@ -70,6 +73,7 @@ This vault includes an agent scaffold in `.claude/`:
 - **`.claude/commands/`** — Worldbuilding workflow commands
 
 Read the grimoire-overlay skill for detailed property schema and conventions.
+{% endif %}
 
 ## Working With This Vault
 
