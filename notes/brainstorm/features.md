@@ -1,4 +1,4 @@
-# 📜 Grimoire — Brainstorm: Features
+# Brainstorm: Features
 
 > Features mapped by layer. v1 focuses on Layer 1 (canon) and Layer 2 (creative); Layer 3 features (TTRPG play) are conditional on `project_type`. Some features (audio zones, fog of war, AI agent workflow) are deferred to post-v1.
 

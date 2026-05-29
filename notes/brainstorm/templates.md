@@ -1,4 +1,4 @@
-# 📜 Grimoire — Brainstorm: Note Templates
+# Brainstorm: Note Templates
 
 > All note templates with full markdown content. Visual conventions, properties, and section structure. Templates ship FLAT in `templates/` regardless of which layer they target; naming carries the role.
 

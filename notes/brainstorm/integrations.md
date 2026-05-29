@@ -1,4 +1,4 @@
-# 📜 Grimoire — Brainstorm: Integrations & the Creative Loop
+# Brainstorm: Integrations & the Creative Loop
 
 > The strategic positioning of Grimoire: a structured data substrate for an entire creative ecosystem. Multiple downstream consumers read different layers for different purposes.
 

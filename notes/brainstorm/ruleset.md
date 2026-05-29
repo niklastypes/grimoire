@@ -1,4 +1,4 @@
-# 📜 Grimoire — Brainstorm: TTRPG Ruleset Addendum
+# Brainstorm: TTRPG Ruleset Addendum
 
 > TTRPG-specific addendum. Only relevant when `project_type == 'ttrpg'`. Covers HTBAH mechanics, character system, property strategy, and ruleset progression. The reference content here ships in the generated vault's `mechanics/` folder at Earliest Usable when `ruleset=htbah`.
 

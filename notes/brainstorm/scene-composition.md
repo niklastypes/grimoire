@@ -1,4 +1,4 @@
-# 📜 Grimoire — Brainstorm: Scene & Session Composition (Layer 2)
+# Brainstorm: Scene & Session Composition (Layer 2)
 
 > Design notes for the Layer 2 creative skill(s) that turn canon + creative intent into table-ready scenes and sessions. Captured after validating an early version against Hologrammatica (chapters 1–2 ingested, first scene composed in German). Not yet built; this file collects the design constraints.
 

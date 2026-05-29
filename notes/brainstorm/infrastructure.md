@@ -1,4 +1,4 @@
-# 📜 Grimoire — Brainstorm: Infrastructure
+# Brainstorm: Infrastructure
 
 > Plugin strategy, genre theming, QA tooling, git management, and Copier setup. Most details vary by `project_type` (especially plugin pre-config).
 
