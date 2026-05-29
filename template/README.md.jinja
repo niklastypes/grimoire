@@ -1,6 +1,6 @@
 # {{ project_name }}
 
-> Conjured with [Grimoire](https://github.com/niklastypes/grimoire)
+> Conjured with [Grimoire](https://github.com/niklastypes/grimoire). Works standalone in Obsidian. Optionally enhanced by AI coding agents.
 
 ## Vault Structure
 
@@ -38,15 +38,29 @@ What you bring to the table.
 - **Source:** attribution for where content originated (e.g., "self", "Author 2024")
 - **GenAI:** `genai: true` flags AI-generated content
 
-## First-Time Setup
-
-After opening this vault in Obsidian for the first time:
-
-1. Enable the **Templates** core plugin: Settings → Core plugins → Templates
-2. Set the template folder location: Settings → Templates → Template folder location → `templates`
-
 ## Getting Started
 
-1. Start from `home.md` for an overview of your vault
-2. Use **Insert template** (Ctrl/Cmd+T) to create new notes from the `templates/` folder
-3. Browse your world using the views in `views/`
+1. Open this vault in Obsidian (core plugins and templates are pre-configured)
+2. Start from `home.md` for an overview of your vault
+3. Use **Insert template** (Ctrl/Cmd+T) to create new notes from the `templates/` folder
+4. Browse your world using the views in `views/`
+
+## Using AI Assistants (optional)
+
+This vault includes a `.claude/` scaffold that teaches AI coding agents how to work with your world. This is entirely optional: everything works without AI.
+
+To use it, open the vault directory in an AI coding agent such as [Claude Code](https://docs.anthropic.com/en/docs/claude-code), Codex, or OpenCode. The agent automatically picks up:
+
+- **Skills** in `.claude/skills/` — Obsidian conventions, Grimoire's three-layer model, and your project-specific canon rules
+- **Commands** in `.claude/commands/` — worldbuilding workflows you can run
+{% if include_sources %}
+### Ingesting source material
+
+If you're adapting from existing source material, the `/ingest-source` command can help. It reads a chapter, wiki page, or reference text and extracts structured entity notes into `world/` with proper frontmatter and wikilinks. Run it from your AI coding agent:
+
+```
+/ingest-source
+```
+
+You can also ingest source material manually: create notes in `sources/` for raw material, then create entity notes in `world/` using the templates.
+{% endif %}
