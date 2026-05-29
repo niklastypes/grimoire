@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.3.0](https://github.com/niklastypes/grimoire/compare/v0.2.0...v0.3.0) (2026-05-29)
+
+
+### Features
+
+* add .obsidian/ config with core plugins and templates folder ([be0d61a](https://github.com/niklastypes/grimoire/commit/be0d61ac764d952f1fa9e99993e2650a49bf28d9))
+* add collapsible property guides to all templates ([b6e813e](https://github.com/niklastypes/grimoire/commit/b6e813e560372d2030dff2fa97b7beaeb543eb28))
+* add grimoire overlay skill with worldbuilding conventions ([81b1a8b](https://github.com/niklastypes/grimoire/commit/81b1a8b5ab416dfa3df3c3cd42707e4ef49082c0))
+* add ingest-source command for source material ingestion ([84d207a](https://github.com/niklastypes/grimoire/commit/84d207ab776b724989ed3b686e8271618a8c88c4))
+* add per-vault project canon skill skeleton ([126d466](https://github.com/niklastypes/grimoire/commit/126d4660359e5ed95e0fb11a176f40d1cdc2a643))
+* expand .gitignore with .obsidian/ local-state patterns ([df1d0ad](https://github.com/niklastypes/grimoire/commit/df1d0ad9d591dff7c1ba5da06846b23b94ced5bf))
+* make agent scaffold conditional on include_agent_scaffold question ([eb95189](https://github.com/niklastypes/grimoire/commit/eb951897ffda3347664948ac37dab2f37e174ed7))
+* upgrade vault CLAUDE.md to governance schema ([70639e5](https://github.com/niklastypes/grimoire/commit/70639e5be1eaa9ae998e680f0e9d14c9e4c32ab4))
+* vendor kepano/obsidian-skills v1.0.1 (MIT) ([36021f7](https://github.com/niklastypes/grimoire/commit/36021f74c806914102ce8b89ae0661b68ba6ff6e))
+
+
+### Bug Fixes
+
+* add .base extension to Bases view embeds in home.md ([f728d7c](https://github.com/niklastypes/grimoire/commit/f728d7cf16dced2fee9397eb9b1280088d4c105d))
+* derive include_sources automatically from project_mode ([7d5dc63](https://github.com/niklastypes/grimoire/commit/7d5dc63dee84c7e9a81b77dcab21c5715df8c486))
+* exclude vault CLAUDE.md when agent scaffold is disabled ([b9cbd3a](https://github.com/niklastypes/grimoire/commit/b9cbd3a4f6f63301bfcc4c69308092bccae5af75))
+* replace Dataview inline queries with static placeholders ([ea1ff54](https://github.com/niklastypes/grimoire/commit/ea1ff54a979d66696e6456ac1e2b74824e126e7b))
+
 ## [0.2.0](https://github.com/niklastypes/grimoire/compare/v0.1.0...v0.2.0) (2026-05-28)
 
 
