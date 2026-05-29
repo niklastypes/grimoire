@@ -33,5 +33,5 @@ genai: false
 > - **district:** the area or region this location belongs to
 > - **parent-location:** wikilink to the containing location
 > - **canon:** `true` (canonical to the universe) or `false` (homebrew, what-if)
-> - **source:** attribution, e.g. `"self"`, `"Hillenbrand 2018"`
+> - **source:** attribution, e.g. `"self"`, `"Author 2024"`
 > - **genai:** `true` if AI-generated, `false` otherwise

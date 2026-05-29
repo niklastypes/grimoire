@@ -16,14 +16,14 @@ The user will provide source material in one of these forms:
 
 Ask the user for:
 1. The source material (or where to find it)
-2. The attribution string (e.g., "Hillenbrand, Hologrammatica, Ch. 1", "Lightbringer Wiki")
+2. The attribution string (e.g., "Author, Book Title, Ch. 1", "Fandom Wiki - Topic")
 
 ## Process
 
 ### Step 1: Create or update source note
 
 Save the raw or cleaned source material in `sources/`:
-- Filename: lowercase kebab-case, descriptive (e.g., `hologrammatica-ch01.md`, `lightbringer-wiki-chromeria.md`)
+- Filename: lowercase kebab-case, descriptive (e.g., `source-book-ch01.md`, `wiki-magic-system.md`)
 - Frontmatter:
 
 ```yaml

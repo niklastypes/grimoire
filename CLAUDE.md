@@ -86,7 +86,7 @@ Lean by design. Player-specific details are filled post-generation.
 - `type`: `character | location | item | faction | lore | scene | session-prep | session-log | encounter`
 - `status`: `draft | ready | revealed | retired`
 - `canon`: `true | false` (default true). Is this canonical to the universe?
-- `source`: attribution string (`"Hillenbrand 2018"`, `"self"`)
+- `source`: attribution string (`"Author 2024"`, `"self"`)
 - `genai`: `true | false`. AI-generated content provenance flag.
 
 ## Template Repo Layout
@@ -122,8 +122,8 @@ grimoire/                            (this repo)
 
 ## V1 Validation Targets
 
-- **Hologrammatica**: Tom Hillenbrand adaptation, TTRPG (HTBAH ruleset), German content
-- **Prisma**: Brent Weeks Lightbringer fan ARPG, video-game project_type
+- A TTRPG campaign adapted from an existing novel, using the HTBAH ruleset
+- A fan-made video game (Godot) drawing from an existing book series
 
 ## Working on This Repo
 

@@ -36,7 +36,7 @@ Every Grimoire vault is organized around three layers:
 | **2. Creative** | The unique work you build on top of canon | `story/` (plot, scenes), `mechanics/` (systems, rules) |
 | **3. Production** | The deliverable. Sometimes in the vault (TTRPG sessions), sometimes outside (video game code) | `play/` for TTRPG |
 
-For a TTRPG like Hologrammatica: all three layers live in the vault. For a video game like Prisma: layers 1 and 2 in the vault, layer 3 (the actual game code) in a separate project.
+For a TTRPG campaign: all three layers live in the vault. For a video game: layers 1 and 2 in the vault, layer 3 (the actual game code) in a separate project.
 
 ## What You Get
 

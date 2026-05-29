@@ -31,7 +31,7 @@ All entity notes share these base properties:
 | `type` | string | (per template) | Entity type: `character`, `location`, `item`, `faction`, `lore`, `scene` |
 | `status` | string | `draft` | Lifecycle: `draft` → `ready` → `revealed` → `retired` |
 | `canon` | boolean | `true` | Is this canonical to the universe? |
-| `source` | string | `""` | Attribution: `"self"`, `"Hillenbrand 2018"`, `"Lightbringer Wiki"` |
+| `source` | string | `""` | Attribution: `"self"`, `"Author 2024"`, `"Fandom Wiki"` |
 | `tags` | list | `[]` | Freeform tags |
 | `genai` | boolean | `false` | Was this content AI-generated? |
 
