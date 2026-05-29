@@ -2,31 +2,35 @@
 
 > Each stage tagged so `copier update` works from any point.
 
-## Earliest Testable
+## Earliest Testable ✓ shipped v0.2.0 (2026-05-29)
 
-### Bus Ticket
+### Bus Ticket ✓
 Repo setup, LICENSE, copier.yml with three-layer question set, notes/ populated.
 
-### Skateboard
-Copier template generates the three-layer vault. Folder structure per project_type, all flat templates, `home.md` with real Bases views, `world-primer.md` with genre defaults, `.gitignore`, attributed `README.md`. Open in Obsidian, start writing.
+### Skateboard ✓
+Copier template generates the three-layer vault. Folder structure per project_type, all flat templates, `home.md` with real Bases views, `world-primer.md` for TTRPG players, `.gitignore`, attributed `README.md`, vault `CLAUDE.md` for AI agents, release-please workflow. Open in Obsidian, start writing.
 
-- Slice: copier.yml question set (project_name, project_type, project_mode, genre, genre_theme, include_sources)
-- Slice: folder structure with conditional excludes (sources/, mechanics/, play/)
-- Slice: flat templates (character, location, item, faction, lore, scene, session-prep, session-log, encounters)
-- Slice: Bases view files (all-characters, all-locations, all-factions, all-items, all-lore, canon-only)
-- Slice: home.md dashboard with real Bases embeds
-- Slice: world-primer.md with genre-appropriate starter content
+Notable changes from original plan:
+- `genre_theme` dropped (deferred to Earliest Usable with CSS)
+- `include_sources` derived automatically from `project_mode` (no longer a visible question)
+- `include_genre_css` added (asked when genre != custom)
+- `world-primer.md` is player-facing (not a creator writing prompt), TTRPG-only
+- Vault `CLAUDE.md` added (basic version, improved at Earliest Lovable)
+- Templates use static infobox placeholders (no Dataview dependency)
+- All templates include collapsible property guides
 
 ## Earliest Usable
 
 ### Scooter
-CSS snippets (infobox callout + genre themes), `.obsidian/` config (core plugins), auto-populated `style-guide.md`, conditional QA tooling (pre-commit, markdownlint), template-side validation/test-generation scripts, CI workflow, release-please.
+CSS snippets (infobox callout + genre themes), `.obsidian/` config (core plugins, pre-set Templates folder), auto-populated `style-guide.md`, conditional QA tooling (pre-commit, markdownlint), template-side validation/test-generation scripts, CI workflow.
 
-- Slice: CSS snippets per genre_theme
-- Slice: .obsidian/ with core plugin config
+Note: release-please already shipped with the Skateboard.
+
+- Slice: CSS snippets per genre (driven by `include_genre_css`)
+- Slice: .obsidian/ with core plugin config (Templates folder, Bases enabled)
 - Slice: style-guide.md auto-populated from genre defaults
 - Slice: QA scripts (Python, template-side only)
-- Slice: CI + release-please
+- Slice: CI workflow (conventional commit validation)
 
 ## Earliest Lovable
 
