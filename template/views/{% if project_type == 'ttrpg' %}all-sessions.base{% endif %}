@@ -1,4 +1,6 @@
 filters:
+  and:
+    - 'file.folder != "templates"'
   or:
     - 'type == "session-prep"'
     - 'type == "session-log"'
