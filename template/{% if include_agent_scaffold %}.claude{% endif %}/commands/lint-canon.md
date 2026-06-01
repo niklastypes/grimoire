@@ -65,7 +65,15 @@ For each wikilink found in entity notes (both frontmatter and body):
 - If not, does it exist elsewhere in the vault?
 - Flag broken links (target does not exist anywhere)
 
-### Step 5: Report
+### Step 5: Check for orphan entities
+
+For each entity in `world/`, check if **any other note in the vault** links to it (wikilink in body or frontmatter). An entity is an orphan if:
+- No other entity in `world/` links to it
+- No scene, session, or other note anywhere in the vault links to it
+
+Orphans aren't necessarily errors (a freshly ingested entity may not be linked yet), so report them as **info**. But a high orphan count suggests the entity graph is disconnected and needs linking work.
+
+### Step 6: Report
 
 ```
 ## Lint Canon Report
@@ -93,6 +101,7 @@ Issues that indicate potential problems.
 - N entities with `genai: true`
 - Source coverage: N unique sources referenced
 - Broken wikilinks: [[target-1]], [[target-2]] (or "none")
+- Orphan entities (no incoming links): [[orphan-1]], [[orphan-2]] (or "none")
 
 ### Summary
 
