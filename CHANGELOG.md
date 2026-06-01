@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.1](https://github.com/niklastypes/grimoire/compare/v0.6.0...v0.6.1) (2026-06-01)
+
+
+### Bug Fixes
+
+* remove duplicate Conjured with Grimoire from README header ([5abde14](https://github.com/niklastypes/grimoire/commit/5abde1490dd9ee05c603de4d9e1fa054ae24e63d))
+
 ## [0.6.0](https://github.com/niklastypes/grimoire/compare/v0.5.1...v0.6.0) (2026-06-01)
 
 
