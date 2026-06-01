@@ -77,7 +77,7 @@ Use the `/ingest-source` command. It handles the full workflow:
 {% else %}
 To ingest source material into this vault:
 {% endif %}
-1. Raw source saved in a named subdirectory of `sources/` (e.g., `chapters/`, `wiki/`, `fragments/`)
+1. Raw source saved in a named subdirectory of `sources/` (e.g., `chapters/`, `wiki/`, `fragments/`). For `.epub` files, use `./scripts/split-epub.sh` to extract chapters first.
 2. Entities extracted and created/updated in `world/` using templates
 3. Per-source summary written to `sources/summaries/`
 4. Running synthesis (`sources/synthesis.md`) updated

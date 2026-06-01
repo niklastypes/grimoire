@@ -58,7 +58,7 @@ To use it, open the vault directory in an AI coding agent such as [Claude Code](
 ### Recommended Workflow
 
 1. **Open your agent** in this vault's directory. It reads `CLAUDE.md` automatically and understands the three-layer model.
-{% if include_sources %}2. **Ingest source material.** Drop source files into `sources/`, then run `/ingest-source` for each one. The agent extracts entities into `world/` with proper frontmatter and wikilinks.
+{% if include_sources %}2. **Ingest source material.** If you have an `.epub`, run `./scripts/split-epub.sh book.epub chapters` to split it into chapter files (requires `pandoc`: `brew install pandoc`). Otherwise, drop source files into `sources/chapters/` (or `wiki/`, `fragments/`) manually. Then run `/ingest-source` for each one. The agent extracts entities into `world/` with proper frontmatter and wikilinks.
 3. **Check quality regularly.** After every 10-20 ingested entities, run `/lint-canon` to catch missing properties and canon inconsistencies. Once you have substantial canon, run `/audit-conflicts` to surface contradictions across entries.{% else %}2. **Create entities.** Use the templates (Ctrl/Cmd+T) or ask the agent to create notes for you. All entities live in `world/`.
 3. **Check quality regularly.** After building up content, run `/lint-canon` to catch missing properties and `/audit-conflicts` to surface contradictions.{% endif %}
 4. **Browse your world** using the Bases views in `views/` or from `home.md`.
