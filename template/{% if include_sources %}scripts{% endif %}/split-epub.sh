@@ -45,28 +45,45 @@ trap 'rm -rf "$TEMP_DIR"' EXIT
 
 mkdir -p "$SOURCES_DIR"
 
-# --- Unzip epub and find chapter files ---
+# --- Unzip epub ---
 
 echo "Extracting $(basename "$EPUB_FILE")..."
 unzip -o "$EPUB_FILE" -d "$TEMP_DIR" > /dev/null 2>&1
 
-# Find XHTML/HTML files, filter to likely chapters (skip toc, cover, nav, etc.)
-CHAPTER_FILES=()
-while IFS= read -r f; do
-  basename_lower=$(basename "$f" | tr '[:upper:]' '[:lower:]')
-  # Skip obvious non-chapter files
-  if [[ "$basename_lower" =~ ^(toc|nav|cover|title|colophon|copyright|imprint|index)\. ]]; then
-    continue
-  fi
-  CHAPTER_FILES+=("$f")
-done < <(find "$TEMP_DIR" -name "*.xhtml" -o -name "*.html" | sort)
+# --- Read spine from content.opf for correct reading order ---
 
-if [[ ${#CHAPTER_FILES[@]} -eq 0 ]]; then
-  echo "Error: no XHTML/HTML files found in the epub."
+OPF_FILE=$(find "$TEMP_DIR" -name "*.opf" | head -1)
+OPF_DIR=$(dirname "$OPF_FILE")
+
+if [[ -z "$OPF_FILE" ]]; then
+  echo "Error: no .opf manifest found in the epub."
   exit 1
 fi
 
-echo "Found ${#CHAPTER_FILES[@]} files. Converting to markdown..."
+# Extract href values from the manifest, in spine order:
+# 1. Get spine idrefs in order
+# 2. Map each idref to its manifest href
+# 3. Resolve to full file paths
+CHAPTER_FILES=()
+while IFS= read -r idref; do
+  # Look up the href for this idref in the manifest (href and id can appear in either order)
+  item_line=$(grep "id=\"${idref}\"" "$OPF_FILE" | grep 'href=' | head -1)
+  href=$(echo "$item_line" | grep -o 'href="[^"]*"' | sed 's/href="//;s/"//')
+  if [[ -z "$href" ]]; then
+    continue
+  fi
+  full_path="$OPF_DIR/$href"
+  if [[ -f "$full_path" ]]; then
+    CHAPTER_FILES+=("$full_path")
+  fi
+done < <(grep -o 'idref="[^"]*"' "$OPF_FILE" | sed 's/idref="//;s/"//')
+
+if [[ ${#CHAPTER_FILES[@]} -eq 0 ]]; then
+  echo "Error: no files found in epub spine."
+  exit 1
+fi
+
+echo "Found ${#CHAPTER_FILES[@]} spine entries. Converting to markdown..."
 
 # --- Convert each chapter ---
 
