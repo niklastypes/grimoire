@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.5.1](https://github.com/niklastypes/grimoire/compare/v0.5.0...v0.5.1) (2026-06-01)
+
+
+### Bug Fixes
+
+* add H1 headline placeholders to all entity templates ([56a1486](https://github.com/niklastypes/grimoire/commit/56a148684173a78c2dcbaf9d3df848f98d373711))
+* exclude templates folder from all Bases views ([3538835](https://github.com/niklastypes/grimoire/commit/3538835d3cbd2947cd1bf208cdb91d0a436af50f))
+* move Conjured with Grimoire attribution to README footer ([49801a7](https://github.com/niklastypes/grimoire/commit/49801a7f43af7a242549e68859dface9ff6b7747))
+* remove all em dashes from templates and docs ([3754a97](https://github.com/niklastypes/grimoire/commit/3754a971304d5988ae05e4524cac80bfca9356ba))
+* rewrite split-epub to unzip and convert per-file ([882c580](https://github.com/niklastypes/grimoire/commit/882c580192103d3e50148f3138464cc18fddfbb3))
+
 ## [0.5.0](https://github.com/niklastypes/grimoire/compare/v0.4.0...v0.5.0) (2026-06-01)
 
 
