@@ -1,3 +1,6 @@
 {
-  "alwaysUpdateLinks": true
+  "readableLineLength": false,
+  "showLineNumber": true,
+  "alwaysUpdateLinks": true,
+  "showInlineTitle": false
 }

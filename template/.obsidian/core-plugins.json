@@ -9,6 +9,7 @@
   "tag-pane": true,
   "properties": true,
   "page-preview": true,
+  "daily-notes": true,
   "templates": true,
   "note-composer": true,
   "command-palette": true,
@@ -16,6 +17,16 @@
   "bookmarks": true,
   "outline": true,
   "word-count": true,
+  "audio-recorder": true,
   "file-recovery": true,
-  "bases": true
+  "bases": true,
+  "footnotes": false,
+  "slash-command": false,
+  "markdown-importer": false,
+  "zk-prefixer": false,
+  "random-note": false,
+  "slides": false,
+  "workspaces": false,
+  "publish": false,
+  "sync": false
 }
