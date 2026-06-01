@@ -6,7 +6,7 @@ Same philosophy as [Kindling](https://github.com/niklastypes/kindling) (Python p
 
 ## Current Focus
 
-**Layer 1 Ready (Source Ingestion)**: shipped. Vault includes agent scaffold (kepano skills + grimoire overlay + ingest-source command) so you can ingest source material and get structured entities in `world/`.
+**Layer 1 Ready**: shipped. Vault includes agent scaffold (skills + commands), source ingestion, and canon quality tools (lint-canon, audit-conflicts, Bases views). Next up: Layer 2 (creative workflow).
 
 See [notes/roadmap.md](./notes/roadmap.md) for the full staged plan.
 

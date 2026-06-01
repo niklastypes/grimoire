@@ -23,10 +23,10 @@ Notable changes from original plan:
 - Templates use static infobox placeholders (no Dataview dependency)
 - All templates include collapsible property guides
 
-## Layer 1 Ready (next)
+## Layer 1 Ready ✓ shipped v0.4.0
 
-### Source Ingestion
-The vault becomes a real worldbuilding tool. Scaffold a vault, ingest source material, get structured entities in `world/`. Validated by ingesting the first chapters/wiki pages for Hologrammatica and Prisma.
+### Source Ingestion ✓
+The vault becomes a real worldbuilding tool. Scaffold a vault, ingest source material, get structured entities in `world/`.
 
 - `.obsidian/` config: core plugins enabled, Templates folder pre-set, expanded `.gitignore`
 - `.claude/skills/`: kepano base (vendored, MIT), grimoire overlay, per-vault project skill skeleton
@@ -34,13 +34,14 @@ The vault becomes a real worldbuilding tool. Scaffold a vault, ingest source mat
 - `ingest-source` v2: writes a compact per-source summary into each source note + maintains a running story digest (`sources/_digest.md`) so downstream skills don't need to re-read raw chapters. See [brainstorm/features.md#source-summaries-running-story-digest](brainstorm/features.md#source-summaries-running-story-digest).
 - Upgraded vault `CLAUDE.md`: becomes the real schema (ingest rules, canon conventions, entity creation guidelines)
 
-### Canon Quality
+### Canon Quality ✓
 Keep Layer 1 consistent as content grows.
 
-- `lint-canon` command: property completeness, canon consistency checks
-- `audit-conflicts` command: surface contradictions across canon entries
-- Vault health scripts: orphan checks, property validation
-- Additional Bases views: clue tracking, unrevealed secrets, by-source attribution
+- `lint-canon` command: property completeness, canon consistency, wikilink health, orphan entity detection
+- `audit-conflicts` command: contradictions, duplicates, relationship gaps across canon entries
+- Bases views: clues & secrets, by-source attribution, unrevealed secrets
+- Commands reference + recommended workflow guide in vault CLAUDE.md and README
+- Content language rule: Layer 1/2 content matches source material language
 
 ## Layer 2 Ready (future)
 
