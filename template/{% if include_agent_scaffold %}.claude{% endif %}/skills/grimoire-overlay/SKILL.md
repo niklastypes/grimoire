@@ -23,7 +23,7 @@ Grimoire vaults use a three-layer model for creative worldbuilding. This skill t
 - **One entity per file.** If an entity has sub-aspects, link to separate notes
 - **Content language:** write Layer 1 (canon) and Layer 2 (creative) content in the same language as the source material. Vault structure (folder names, property keys, template section headers) stays English.
 - **H1 headline:** every entity note starts with `# Entity Name` (Title Case, matching the entity's display name) immediately after frontmatter. The agent must replace template placeholder names (e.g., "Character Name") with the actual entity name.
-- **Infobox:** every entity has a `[!infobox]` callout right after the H1 headline with an image embed and a TL;DR summary (1-2 sentences). The image embed references `assets/images/<type>/<entity-name>.png` (broken embed is fine if the image doesn't exist yet). The summary should capture the essence: who/what it is, why it matters. Do not repeat property values in the infobox.
+- **Infobox:** every entity has a `[!infobox]` callout right after the H1 headline with an image embed and a TL;DR summary (1-2 sentences). The image embed uses the full path `assets/images/<type>/<entity-name>.png` (e.g., `assets/images/characters/galahad-singh.png`, `assets/images/locations/camden.png`) (broken embed is fine if the image doesn't exist yet). The summary should capture the essence: who/what it is, why it matters. Do not repeat property values in the infobox.
 
 ## Property Schema
 
