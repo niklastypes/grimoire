@@ -73,6 +73,38 @@ This vault includes an agent scaffold in `.claude/`:
 - **`.claude/commands/`** — Worldbuilding workflow commands
 
 Read the grimoire-overlay skill for detailed property schema and conventions.
+
+## Commands Reference
+
+| Command | Purpose | When to run |
+|---------|---------|-------------|
+{% if include_sources %}| `/ingest-source` | Extract entities from source material into `world/` | When adding new source material (chapters, wiki pages, reference texts) |
+{% endif %}| `/lint-canon` | Validate property completeness, canon consistency, wikilink health, orphan detection | After every 10-20 new entities, or after a batch of edits |
+| `/audit-conflicts` | Surface contradictions, duplicates, and relationship mismatches across entities | Once you have 20+ entities, or after ingesting from a new source that may conflict with existing canon |
+
+### Recommended Workflow
+
+{% if include_sources %}**Building your world from sources:**
+
+1. Drop source material into `sources/` (chapters, wiki extracts, reference docs)
+2. Run `/ingest-source` for each source. The agent extracts entities into `world/` with proper frontmatter and wikilinks.
+3. After every 10-20 ingested entities, run `/lint-canon` to catch missing properties, broken links, and orphan entities.
+4. Once you have substantial canon (20+ entities), run `/audit-conflicts` to find contradictions between sources and relationship gaps.
+5. Review the audit results and resolve conflicts. The agent flags issues but never auto-resolves contradictions.
+6. Repeat: ingest more sources, lint, audit, resolve.
+{% else %}**Building your world from scratch:**
+
+1. Create entities using templates (Ctrl/Cmd+T) or ask the agent to create them. All entities go in `world/`.
+2. Link entities to each other with `[[wikilinks]]` as you build.
+3. After building up content, run `/lint-canon` to catch missing properties, broken links, and orphan entities.
+4. Run `/audit-conflicts` to surface contradictions and relationship gaps.
+5. Review and resolve. Repeat as the world grows.
+{% endif %}
+**Quality maintenance (ongoing):**
+
+- Run `/lint-canon` after any batch of changes to keep properties clean
+- Run `/audit-conflicts` when adding content from new sources or after major creative additions
+- Check the Bases views in `views/` for clue tracking, source attribution, and unrevealed secrets
 {% endif %}
 
 ## Working With This Vault
