@@ -77,7 +77,7 @@ Lean by design. Player-specific details are filled post-generation.
 | Plugin strategy | **Core first, community second, custom third** | Javalent stack for TTRPG deferred to Layer 3 Ready |
 | Agent scaffold | **kepano base + grimoire overlay + per-vault project skill** | Three-tier skill stack, each updatable independently |
 | Naming | **lowercase kebab-case** | All folders and files |
-| Language | **English structure, multilingual content** | Vault structure in English; content in any language |
+| Language | **English structure, multilingual content** | Vault structure in English; Layer 1 and 2 content in the same language as the source material |
 | Generated vault | **Zero Python dependency** | Python OK template-side only |
 | Dot directories | **`--trust` required** | Copier security feature; users prompted on first copy |
 

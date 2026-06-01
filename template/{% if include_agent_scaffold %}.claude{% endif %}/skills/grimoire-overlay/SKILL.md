@@ -21,6 +21,7 @@ Grimoire vaults use a three-layer model for creative worldbuilding. This skill t
 - **Place all entities in `world/`** (flat, no subfolders). Navigation is via Bases views and wikilinks, not folder hierarchy
 - **Filename convention:** lowercase kebab-case (e.g., `kira-morgenrot.md`, `the-chromeria.md`)
 - **One entity per file.** If an entity has sub-aspects, link to separate notes
+- **Content language:** write Layer 1 (canon) and Layer 2 (creative) content in the same language as the source material. Vault structure (folder names, property keys, template section headers) stays English.
 
 ## Property Schema
 
