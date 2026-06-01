@@ -1,16 +1,38 @@
 ---
 name: {{ project_name }}-canon
-description: Project-specific canon rules and conventions for {{ project_name }}. Fill this in as your world grows.
+description: Project-specific canon rules and conventions for {{ project_name }}. The agent loads this automatically to understand your world's unique constraints.
 ---
 
 # {{ project_name }} Canon
 
-This skill teaches AI agents the specific rules of your project's universe.
+This skill teaches AI agents the specific rules and constraints of YOUR universe. It is loaded automatically in every agent session (you don't need to call it). Update it as your world grows.
 
-## How to use
+## When to update this file
 
-Add project-specific facts, naming conventions, and rules here as your world grows. For example:
-- Key terminology and how it's used
-- Naming conventions for entities in your universe
-- Canon boundaries (what's in scope, what's not)
-- Relationships between major factions or systems
+- After your first batch of ingested sources (5-10 sources), patterns emerge. Capture them here.
+- When you notice the agent making the same mistake twice (wrong naming, wrong relationship, wrong tone).
+- When you establish a convention you want enforced going forward.
+
+## What to put here
+
+**Rules the agent must follow**, not general world lore. Entity notes in `world/` hold the lore. This file holds the *meta-rules* about how to handle that lore. Good examples:
+
+### Naming Conventions
+<!-- How are names formed in this world? Are there patterns per faction/region? -->
+<!-- Example: "All Chromeria names use the format 'Firstname of the Color'" -->
+
+### Terminology
+<!-- Key terms the agent should use correctly and consistently -->
+<!-- Example: "'Drafting' (not 'casting') for the magic system. 'Luxin' (not 'light-matter')." -->
+
+### Canon Boundaries
+<!-- What's in scope for this project? What sources are authoritative? -->
+<!-- Example: "Only the first 3 books are canon. Fan wiki entries are reference only, not canon." -->
+
+### Tone and Language
+<!-- How should entity descriptions read? Clinical? Evocative? In-universe voice? -->
+<!-- Example: "Entity descriptions should read like in-universe encyclopedia entries, not plot summaries." -->
+
+### Known Agent Pitfalls
+<!-- Things the agent gets wrong that you've had to correct -->
+<!-- Example: "The agent keeps merging 'Kira-7' and 'Kira Morgenrot'. They are different characters." -->
