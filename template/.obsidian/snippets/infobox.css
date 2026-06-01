@@ -1,18 +1,17 @@
-/* Wiki-style infobox: floats to the right in reading/preview mode */
+/* Wiki-style infobox: floats to the right in reading mode */
 
 .callout[data-callout="infobox"] {
-  float: right;
+  float: right !important;
   width: 300px;
-  margin: 0 0 1em 1.5em;
+  margin: 0 0 1em 1.5em !important;
   padding: 0.75em;
   border: 1px solid var(--background-modifier-border);
   border-radius: 8px;
   background-color: var(--background-secondary);
   font-size: 0.9em;
-  clear: right;
 }
 
-/* Remove default callout icon and fold indicator */
+/* Remove default callout icon and title bar */
 .callout[data-callout="infobox"] .callout-title {
   display: none;
 }
@@ -33,7 +32,27 @@
   color: var(--text-muted);
 }
 
-/* Clear float after main content so footer/metadata doesn't wrap */
+/* Prevent ALL siblings after the infobox from clearing the float */
+.markdown-preview-sizer > .callout:has([data-callout="infobox"]) ~ *,
+.markdown-preview-sizer > div:has(.callout[data-callout="infobox"]) ~ * {
+  clear: none !important;
+}
+
+/* Also target headings and paragraphs directly */
+.markdown-preview-view h1,
+.markdown-preview-view h2,
+.markdown-preview-view h3,
+.markdown-preview-view h4,
+.markdown-preview-view h5,
+.markdown-preview-view h6,
+.markdown-preview-view p,
+.markdown-preview-view ul,
+.markdown-preview-view ol,
+.markdown-preview-view .callout:not([data-callout="infobox"]) {
+  clear: none !important;
+}
+
+/* Only clear at the very end */
 .markdown-preview-view .mod-footer {
   clear: both;
 }
