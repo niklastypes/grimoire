@@ -9,10 +9,9 @@ tags: []
 ---
 
 > [!infobox]
-> # Name
-> **District:**
-> **Parent:**
-> **Status:**
+> ![[location-name.png]]
+>
+> *A one-to-two sentence summary of this place: what it is, what it feels like, and why it matters.*
 
 ## Description
 

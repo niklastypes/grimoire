@@ -9,10 +9,9 @@ tags: []
 ---
 
 > [!infobox]
-> # Name
-> **Alignment:**
-> **Leader:**
-> **Status:**
+> ![[faction-name.png]]
+>
+> *A one-to-two sentence summary of what this faction is, what they want, and why they matter.*
 
 ## Description
 

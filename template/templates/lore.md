@@ -11,10 +11,9 @@ found-at:
 ---
 
 > [!infobox]
-> # Name
-> **Category:**
-> **Status:**
-> **Clue:**
+> ![[lore-name.png]]
+>
+> *A one-to-two sentence summary of this lore entry: what it is and why it's significant to the world.*
 
 ## Description
 

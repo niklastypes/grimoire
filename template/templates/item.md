@@ -12,11 +12,9 @@ found-at:
 ---
 
 > [!infobox]
-> # Name
-> **Held by:**
-> **Status:**
-> **Prop:**
-> **Clue:**
+> ![[item-name.png]]
+>
+> *A one-to-two sentence summary of what this item is, its significance, and its current state.*
 
 ## Description
 

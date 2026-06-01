@@ -16,12 +16,9 @@ found-at:
 ---
 
 > [!infobox]
-> # Name
-> **Type:**
-> **Faction:**
-> **Role:**
-> **Status:**
-> **Alive:**
+> ![[character-name.png]]
+>
+> *A one-to-two sentence summary of who this character is, what drives them, and why they matter to the story.*
 
 ## Description
 
