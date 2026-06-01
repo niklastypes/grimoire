@@ -45,57 +45,67 @@ trap 'rm -rf "$TEMP_DIR"' EXIT
 
 mkdir -p "$SOURCES_DIR"
 
-echo "Converting $(basename "$EPUB_FILE") to markdown..."
-pandoc "$EPUB_FILE" -t markdown -o "$TEMP_DIR/full.md" --wrap=none
+# --- Unzip epub and find chapter files ---
 
-# --- Split by H1 headers ---
+echo "Extracting $(basename "$EPUB_FILE")..."
+unzip -o "$EPUB_FILE" -d "$TEMP_DIR" > /dev/null 2>&1
+
+# Find XHTML/HTML files, filter to likely chapters (skip toc, cover, nav, etc.)
+CHAPTER_FILES=()
+while IFS= read -r f; do
+  basename_lower=$(basename "$f" | tr '[:upper:]' '[:lower:]')
+  # Skip obvious non-chapter files
+  if [[ "$basename_lower" =~ ^(toc|nav|cover|title|colophon|copyright|imprint|index)\. ]]; then
+    continue
+  fi
+  CHAPTER_FILES+=("$f")
+done < <(find "$TEMP_DIR" -name "*.xhtml" -o -name "*.html" | sort)
+
+if [[ ${#CHAPTER_FILES[@]} -eq 0 ]]; then
+  echo "Error: no XHTML/HTML files found in the epub."
+  exit 1
+fi
+
+echo "Found ${#CHAPTER_FILES[@]} files. Converting to markdown..."
+
+# --- Convert each chapter ---
 
 CHAPTER_NUM=0
-CURRENT_FILE=""
-CURRENT_TITLE=""
+for f in "${CHAPTER_FILES[@]}"; do
+  # Convert to clean markdown: gfm format, strip residual HTML tags
+  CONTENT=$(pandoc "$f" -f html -t gfm --wrap=none --strip-comments 2>/dev/null \
+    | sed 's/<[^>]*>//g' \
+    | sed '/^[[:space:]]*$/N;/^\n[[:space:]]*$/d')
 
-while IFS= read -r line; do
-  # Detect H1 header (# Title)
-  if [[ "$line" =~ ^#\ (.+)$ ]]; then
-    CHAPTER_NUM=$((CHAPTER_NUM + 1))
-    CURRENT_TITLE="${BASH_REMATCH[1]}"
-
-    # Create kebab-case filename from title
-    SLUG=$(echo "$CURRENT_TITLE" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9äöüß ]//g' | tr ' ' '-' | sed 's/--*/-/g' | sed 's/^-//;s/-$//')
-
-    # Fallback if slug is empty
-    if [[ -z "$SLUG" ]]; then
-      SLUG="chapter-$(printf '%02d' "$CHAPTER_NUM")"
-    fi
-
-    CURRENT_FILE="$SOURCES_DIR/$SLUG.md"
-
-    # Write frontmatter + header
-    {
-      echo "---"
-      echo "type: source"
-      echo "source: \"\""
-      echo "date-ingested: $(date +%Y-%m-%d)"
-      echo "---"
-      echo ""
-      echo "$line"
-    } > "$CURRENT_FILE"
-
-    echo "  $SLUG.md"
-  elif [[ -n "$CURRENT_FILE" ]]; then
-    echo "$line" >> "$CURRENT_FILE"
+  # Skip files with very little content (likely metadata/frontmatter pages)
+  WORD_COUNT=$(echo "$CONTENT" | wc -w | tr -d ' ')
+  if [[ "$WORD_COUNT" -lt 50 ]]; then
+    continue
   fi
-done < "$TEMP_DIR/full.md"
+
+  CHAPTER_NUM=$((CHAPTER_NUM + 1))
+  PADDED=$(printf '%02d' "$CHAPTER_NUM")
+  OUTPUT_FILE="$SOURCES_DIR/chapter-${PADDED}.md"
+
+  {
+    echo "---"
+    echo "type: source"
+    echo "source: \"\""
+    echo "date-ingested: $(date +%Y-%m-%d)"
+    echo "---"
+    echo ""
+    echo "$CONTENT"
+  } > "$OUTPUT_FILE"
+
+  echo "  chapter-${PADDED}.md ($WORD_COUNT words)"
+done
 
 # --- Report ---
 
 if [[ $CHAPTER_NUM -eq 0 ]]; then
   echo ""
-  echo "Warning: no H1 headers found. The epub may use H2 or other markers."
-  echo "The full markdown is at: $TEMP_DIR/full.md"
-  echo "You may need to split it manually or adjust the script."
-  # Don't delete temp dir on failure
-  trap '' EXIT
+  echo "Error: no chapters with substantial content found."
+  echo "The epub may use an unusual structure."
   exit 1
 fi
 
