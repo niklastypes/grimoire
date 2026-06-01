@@ -38,6 +38,20 @@ All entity notes share these base properties:
 
 Type-specific properties are defined in each template's frontmatter. Always preserve the full schema when creating notes.
 
+### Property Value Discipline
+
+**Before assigning a value to any property, check what values already exist in the vault.** This prevents value sprawl that breaks Bases aggregation.
+
+Specifically:
+- **`faction`**: search `world/` for existing faction notes. Use the exact filename (e.g., `"[[the-chromeria]]"`, not `"The Chromeria"` or `"Chromeria faction"`). If no faction note exists yet, create one first, then reference it.
+- **`character-type`**: only `pc` or `npc`. No other values.
+- **`category`** (lore): only `technology`, `history`, `culture`, `geography`, `politics`, `religion`, `science`, `event`. No other values.
+- **`status`**: only `draft`, `ready`, `revealed`, `retired`. No other values.
+- **`district`**, **`parent-location`**, **`held-by`**, **`leader`**: always use `"[[wikilink]]"` format pointing to an existing note. If the target doesn't exist yet, create it first.
+- **`tags`**: check existing tags in the vault before creating new ones. Reuse over invent.
+
+**Rule of thumb:** if a property value would appear in a Bases "group by" or "filter by" query, it must be consistent across all notes. One wrong spelling breaks the group.
+
 ## Canon Rules
 
 - **Default `canon: true`.** Everything you establish IS canon unless marked otherwise.
