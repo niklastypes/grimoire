@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.5.0](https://github.com/niklastypes/grimoire/compare/v0.4.0...v0.5.0) (2026-06-01)
+
+
+### Features
+
+* add base settings for generated vaults ([ce752d6](https://github.com/niklastypes/grimoire/commit/ce752d67d8f80cc3ff13e1defbef4dfbdf3b9364))
+* add wiki-style infobox CSS snippet ([be00e7f](https://github.com/niklastypes/grimoire/commit/be00e7fbeb73ddd0852bb3aa8fb4e369dfd4ef27))
+
+
+### Bug Fixes
+
+* add split-epub helper script and document in vault README/CLAUDE.md ([f973d14](https://github.com/niklastypes/grimoire/commit/f973d14df6afc129e87b0e2358e7aa444d205dce))
+* drop genai property, make source/faction/leader/location lists ([878772e](https://github.com/niklastypes/grimoire/commit/878772e7a70f902e63539b6f831c7d1035d4a86c))
+* redesign infobox as wiki-style TL;DR with image placeholder ([5c27d0d](https://github.com/niklastypes/grimoire/commit/5c27d0d99d052ef1cd232c8c15d178017d2225a9))
+* use float with clear overrides for wiki-style infobox ([413c578](https://github.com/niklastypes/grimoire/commit/413c57823eaacbac562bdb2083dc03bccf37a3a2))
+
 ## [0.4.0](https://github.com/niklastypes/grimoire/compare/v0.3.0...v0.4.0) (2026-06-01)
 
 
