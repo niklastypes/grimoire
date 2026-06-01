@@ -1,0 +1,39 @@
+/* Wiki-style infobox: floats to the right in reading/preview mode */
+
+.callout[data-callout="infobox"] {
+  float: right;
+  width: 300px;
+  margin: 0 0 1em 1.5em;
+  padding: 0.75em;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  background-color: var(--background-secondary);
+  font-size: 0.9em;
+  clear: right;
+}
+
+/* Remove default callout icon and fold indicator */
+.callout[data-callout="infobox"] .callout-title {
+  display: none;
+}
+
+/* Image inside infobox: full width, rounded corners */
+.callout[data-callout="infobox"] img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 0.75em;
+}
+
+/* Summary text styling */
+.callout[data-callout="infobox"] em {
+  display: block;
+  margin-bottom: 0.5em;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+
+/* Clear float after main content so footer/metadata doesn't wrap */
+.markdown-preview-view .mod-footer {
+  clear: both;
+}
