@@ -1,5 +1,6 @@
 filters:
   and:
+    - 'file.folder != "templates"'
     - 'canon == true'
 
 properties:

@@ -1,5 +1,6 @@
 filters:
   and:
+    - 'file.folder != "templates"'
     - 'type == "lore"'
 
 properties:
