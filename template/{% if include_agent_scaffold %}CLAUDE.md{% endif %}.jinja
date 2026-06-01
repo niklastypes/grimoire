@@ -89,10 +89,23 @@ When creating entities from source material, set `canon: true` and `source` to t
 {% if include_agent_scaffold %}
 ## Agent Scaffold
 
-This vault includes an agent scaffold in `.claude/`:
+This vault includes an agent scaffold in `.claude/`. The agent loads it automatically when you open the vault directory in a coding agent.
 
-- **`.claude/skills/`** — Obsidian knowledge (kepano base) + Grimoire conventions (grimoire-overlay) + project-specific canon ({{ project_name }}-canon)
-- **`.claude/commands/`** — Worldbuilding workflow commands
+### Skills (passive, always loaded)
+
+Skills are background knowledge. The agent always has this context without you needing to do anything.
+
+| Skill | What it teaches the agent |
+|-------|--------------------------|
+| `obsidian-markdown` | Markdown, wikilinks, callouts, embeds |
+| `obsidian-bases` | Bases queries, formulas, view definitions |
+| `obsidian-cli` | Obsidian CLI operations |
+| `grimoire-overlay` | Three-layer model, entity rules, property schema, canon rules, source ingestion |
+| `{{ project_name }}-canon` | **Your project's specific rules.** Update this as your world grows (see `.claude/skills/{{ project_name }}-canon/SKILL.md`). |
+
+### Commands (explicit, you invoke them)
+
+Commands are workflows you run on demand by typing the command name in the agent.
 
 Read the grimoire-overlay skill for detailed property schema and conventions.
 
