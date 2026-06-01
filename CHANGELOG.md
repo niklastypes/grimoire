@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.6.0](https://github.com/niklastypes/grimoire/compare/v0.5.1...v0.6.0) (2026-06-01)
+
+
+### Features
+
+* add factions and lore image asset directories ([ee02c70](https://github.com/niklastypes/grimoire/commit/ee02c7034dacd86a667bb9d9dd143009216341e6))
+
+
+### Bug Fixes
+
+* add H1 headline placeholder to encounter-combat template ([c82fdd2](https://github.com/niklastypes/grimoire/commit/c82fdd2f98e3507b8c7166aaed3d826bbf87369e))
+* add H1 headline placeholder to encounter-exploration template ([d2c4466](https://github.com/niklastypes/grimoire/commit/d2c4466b174ef394cd3aeb6a33c086ba2a53fb13))
+* add H1 headline placeholder to encounter-social template ([a922f83](https://github.com/niklastypes/grimoire/commit/a922f83515e679744efb4a4e0107e62f083d6136))
+* add H1 headline placeholder to session-log template ([eeb7937](https://github.com/niklastypes/grimoire/commit/eeb7937ca8eaabed57adaf32e811fdb65769d1a0))
+* add H1 headline placeholder to session-prep template ([b7d3a68](https://github.com/niklastypes/grimoire/commit/b7d3a68e4ecbbc7732fcff51ffc651284c64069d))
+* exclude templates folder from all-encounters Bases view ([ec36d01](https://github.com/niklastypes/grimoire/commit/ec36d01e484740319f52aad70cb5a868363bb22b))
+* exclude templates folder from all-sessions Bases view ([475138e](https://github.com/niklastypes/grimoire/commit/475138e05b4af60900a5fdf64f1369a742d04cb9))
+* use epub spine for correct chapter ordering in split-epub ([f672e24](https://github.com/niklastypes/grimoire/commit/f672e24587a81766fead5c207e9fe325fd21384d))
+* use full asset path for character infobox image placeholder ([9346ee3](https://github.com/niklastypes/grimoire/commit/9346ee30b0c06e5a81cb97cf03ecc8ffb746b3d4))
+* use full asset path for faction infobox image placeholder ([ba89c8b](https://github.com/niklastypes/grimoire/commit/ba89c8b6002596576cd514851449df4b690a1e0a))
+* use full asset path for item infobox image placeholder ([d844875](https://github.com/niklastypes/grimoire/commit/d8448750d97be543694cee4a5bacf42260027ea5))
+* use full asset path for location infobox image placeholder ([4f49ea7](https://github.com/niklastypes/grimoire/commit/4f49ea7707465ed6a0341f9cb3d045453827c501))
+* use full asset path for lore infobox image placeholder ([ddc9296](https://github.com/niklastypes/grimoire/commit/ddc9296b4962c0017f0e014a3794984f565e6ae5))
+
 ## [0.5.1](https://github.com/niklastypes/grimoire/compare/v0.5.0...v0.5.1) (2026-06-01)
 
 
