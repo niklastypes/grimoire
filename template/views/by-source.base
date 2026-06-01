@@ -1,0 +1,16 @@
+filters:
+  and:
+    - 'source != ""'
+
+properties:
+  type:
+    displayName: Type
+  status:
+    displayName: Status
+  canon:
+    displayName: Canon
+
+views:
+  - type: table
+    name: By Source
+    groupBy: source
