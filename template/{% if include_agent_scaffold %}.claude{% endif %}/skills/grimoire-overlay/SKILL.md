@@ -82,9 +82,9 @@ When ingesting source material into the vault:
 8. **Flag ambiguities** for the user rather than guessing
 
 **Three-level navigation for source knowledge:**
-- `sources/synthesis.md` — read first. Running world understanding.
-- `sources/summaries/<source>.md` — drill into one source's contribution.
-- `sources/<subdir>/<source>.md` — raw text for looking things up.
+- `sources/synthesis.md` - read first. Running world understanding.
+- `sources/summaries/<source>.md` - drill into one source's contribution.
+- `sources/<subdir>/<source>.md` - raw text for looking things up.
 
 ## Folder Reference
 

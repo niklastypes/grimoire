@@ -9,25 +9,25 @@ This vault follows Grimoire's **three-layer model**:
 ### Layer 1: Canon
 The universe itself: entities, lore, and source material.
 
-- **`world/`** — characters, locations, items, factions, lore entries (flat, no subfolders)
-{% if include_sources %}- **`sources/`** — reference material from the source universe
+- **`world/`** -characters, locations, items, factions, lore entries (flat, no subfolders)
+{% if include_sources %}- **`sources/`** -reference material from the source universe
 {% endif %}
 ### Layer 2: Creative
 What you build on top of canon: plot and systems.
 
-- **`story/`** — scenes, narrative arcs, plot structure
-{% if project_type != 'generic' %}- **`mechanics/`** — game systems, rules, stat blocks
+- **`story/`** -scenes, narrative arcs, plot structure
+{% if project_type != 'generic' %}- **`mechanics/`** -game systems, rules, stat blocks
 {% endif %}
 {% if project_type == 'ttrpg' %}### Layer 3: Production
 What you bring to the table.
 
-- **`play/`** — session prep, session logs, encounters
+- **`play/`** -session prep, session logs, encounters
 {% endif %}
 ### Supporting Folders
 
-- **`templates/`** — note templates for creating new entities, scenes, sessions
-- **`views/`** — Bases views for browsing and filtering your notes
-- **`assets/`** — images, audio, and other media
+- **`templates/`** -note templates for creating new entities, scenes, sessions
+- **`views/`** -Bases views for browsing and filtering your notes
+- **`assets/`** -images, audio, and other media
 
 ## Conventions
 
@@ -51,8 +51,8 @@ This vault includes a `.claude/` scaffold that teaches AI coding agents how to w
 
 To use it, open the vault directory in an AI coding agent such as [Claude Code](https://docs.anthropic.com/en/docs/claude-code), Codex, or OpenCode. The agent automatically picks up:
 
-- **Skills** in `.claude/skills/` — Obsidian conventions, Grimoire's three-layer model, and your project-specific canon rules
-- **Commands** in `.claude/commands/` — worldbuilding workflows you can run
+- **Skills** in `.claude/skills/` -Obsidian conventions, Grimoire's three-layer model, and your project-specific canon rules
+- **Commands** in `.claude/commands/` -worldbuilding workflows you can run
 
 ### Recommended Workflow
 

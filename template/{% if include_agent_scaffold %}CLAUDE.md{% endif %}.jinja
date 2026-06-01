@@ -14,14 +14,14 @@ This vault uses the **three-layer model**:
 {% endif %}
 ### Folders
 
-- `world/` — all entities (characters, locations, items, factions, lore). Flat, no subfolders. Navigate via Bases views and wikilinks.
-{% if include_sources %}- `sources/` — raw or cleaned source material with attribution
-{% endif %}- `story/` — scenes, plot arcs, narrative structure
-{% if project_type != 'generic' %}- `mechanics/` — game systems, rules, stat blocks
-{% endif %}{% if project_type == 'ttrpg' %}- `play/` — session prep, session logs, encounters
-{% endif %}- `templates/` — note templates (use Obsidian's Insert Template)
-- `views/` — Bases view definitions
-- `assets/` — images, audio, media
+- `world/` -all entities (characters, locations, items, factions, lore). Flat, no subfolders. Navigate via Bases views and wikilinks.
+{% if include_sources %}- `sources/` -raw or cleaned source material with attribution
+{% endif %}- `story/` -scenes, plot arcs, narrative structure
+{% if project_type != 'generic' %}- `mechanics/` -game systems, rules, stat blocks
+{% endif %}{% if project_type == 'ttrpg' %}- `play/` -session prep, session logs, encounters
+{% endif %}- `templates/` -note templates (use Obsidian's Insert Template)
+- `views/` -Bases view definitions
+- `assets/` -images, audio, media
 
 ## Properties
 
@@ -65,9 +65,9 @@ sources/
 ```
 
 Three navigation levels for understanding the world:
-1. **`synthesis.md`** — the running understanding of the entire world. Start here.
-2. **`summaries/`** — per-source summaries. What did this specific source contribute?
-3. **Raw sources** — the original text. Look something up when summaries aren't enough.
+1. **`synthesis.md`** -the running understanding of the entire world. Start here.
+2. **`summaries/`** -per-source summaries. What did this specific source contribute?
+3. **Raw sources** -the original text. Look something up when summaries aren't enough.
 
 ### Ingestion Workflow
 {% if include_agent_scaffold %}

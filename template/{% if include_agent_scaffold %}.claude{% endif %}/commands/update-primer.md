@@ -11,9 +11,9 @@ You are generating or updating the player-facing `world-primer.md` for a Grimoir
 
 Read these in order:
 
-1. **`sources/synthesis.md`** — overall world understanding (if it exists)
-2. **`world/` entities** — but ONLY those with `status: revealed` or `status: ready` AND `canon: true`. Never include `draft` or `retired` entities.
-3. **Existing `world-primer.md`** — preserve any hand-written sections the user has added (Tone & Feel, content boundaries, etc.)
+1. **`sources/synthesis.md`** - overall world understanding (if it exists)
+2. **`world/` entities** - but ONLY those with `status: revealed` or `status: ready` AND `canon: true`. Never include `draft` or `retired` entities.
+3. **Existing `world-primer.md`** - preserve any hand-written sections the user has added (Tone & Feel, content boundaries, etc.)
 
 ## What to Write
 

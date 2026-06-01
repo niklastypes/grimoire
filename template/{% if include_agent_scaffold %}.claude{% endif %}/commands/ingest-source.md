@@ -179,11 +179,11 @@ After processing, provide a summary:
 **Synthesis:** sources/synthesis.md (updated)
 
 ### Created (N new entities)
-- [[entity-name]] (type) — brief description
+- [[entity-name]] (type) - brief description
 - ...
 
 ### Updated (N existing entities)
-- [[entity-name]] — what was added
+- [[entity-name]] - what was added
 - ...
 
 ### Needs Review
@@ -194,9 +194,9 @@ After processing, provide a summary:
 
 The agent (and the user) can navigate source knowledge at three levels of detail:
 
-1. **`sources/synthesis.md`** — read this first. Running understanding of the entire world as of the last ingestion.
-2. **`sources/summaries/<source>.md`** — drill into one source. What did this specific chapter/article/fragment contribute?
-3. **`sources/<subdir>/<source>.md`** — the raw text. Look something up when the summary isn't enough.
+1. **`sources/synthesis.md`** - read this first. Running understanding of the entire world as of the last ingestion.
+2. **`sources/summaries/<source>.md`** - drill into one source. What did this specific chapter/article/fragment contribute?
+3. **`sources/<subdir>/<source>.md`** - the raw text. Look something up when the summary isn't enough.
 
 Downstream commands (`compose-scene`, `audit-conflicts`, etc.) should read `synthesis.md` first and only dive into summaries or raw sources when they need specific detail.
 
