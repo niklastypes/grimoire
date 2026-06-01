@@ -216,3 +216,4 @@ Downstream commands (`compose-scene`, `audit-conflicts`, etc.) should read `synt
 - When updating existing entities, be additive (don't remove existing content)
 - Flag ambiguities for the user rather than guessing
 - Read the grimoire-overlay skill for full property schema and conventions
+- **Property value discipline:** before assigning a property value (faction, district, tags, etc.), search the vault for existing values. Reuse exact existing values, don't invent variations. If a faction/location/character doesn't exist as a note yet, create it first, then reference via `[[wikilink]]`. This prevents value sprawl that breaks Bases aggregation.
