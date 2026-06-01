@@ -55,14 +55,21 @@ To use it, open the vault directory in an AI coding agent such as [Claude Code](
 - **Skills** in `.claude/skills/` — Obsidian conventions, Grimoire's three-layer model, and your project-specific canon rules
 - **Commands** in `.claude/commands/` — worldbuilding workflows you can run
 {% if include_sources %}
-### Ingesting source material
+### Recommended Workflow
 
-If you're adapting from existing source material, the `/ingest-source` command can help. It reads a chapter, wiki page, or reference text and extracts structured entity notes into `world/` with proper frontmatter and wikilinks. Run it from your AI coding agent:
+1. **Open your agent** in this vault's directory. It reads `CLAUDE.md` automatically and understands the three-layer model.
+{% if include_sources %}2. **Ingest source material.** Drop source files into `sources/`, then run `/ingest-source` for each one. The agent extracts entities into `world/` with proper frontmatter and wikilinks.
+3. **Check quality regularly.** After every 10-20 ingested entities, run `/lint-canon` to catch missing properties and canon inconsistencies. Once you have substantial canon, run `/audit-conflicts` to surface contradictions across entries.{% else %}2. **Create entities.** Use the templates (Ctrl/Cmd+T) or ask the agent to create notes for you. All entities live in `world/`.
+3. **Check quality regularly.** After building up content, run `/lint-canon` to catch missing properties and `/audit-conflicts` to surface contradictions.{% endif %}
+4. **Browse your world** using the Bases views in `views/` or from `home.md`.
+5. **Iterate.** Add more sources, create original content, let the agent link entities together. The vault grows richer with each pass.
 
-```
-/ingest-source
-```
+### Available Commands
 
-You can also ingest source material manually: create notes in `sources/` for raw material, then create entity notes in `world/` using the templates.
+| Command | Purpose |
+|---------|---------|
+{% if include_sources %}| `/ingest-source` | Extract entities from source material into `world/` |
+{% endif %}| `/lint-canon` | Check property completeness and canon consistency |
+| `/audit-conflicts` | Surface contradictions across canon entries |
 {% endif %}
 {% endif %}
