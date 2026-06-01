@@ -14,7 +14,7 @@ found-at:
 # Item Name
 
 > [!infobox]
-> ![[item-name.png]]
+> ![[assets/images/items/item-name.png]]
 >
 > *A one-to-two sentence summary of what this item is, its significance, and its current state.*
 
