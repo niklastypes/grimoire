@@ -13,7 +13,7 @@ found-at:
 # Lore Entry Name
 
 > [!infobox]
-> ![[lore-name.png]]
+> ![[assets/images/lore/lore-name.png]]
 >
 > *A one-to-two sentence summary of this lore entry: what it is and why it's significant to the world.*
 
