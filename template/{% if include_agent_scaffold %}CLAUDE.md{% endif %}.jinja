@@ -116,6 +116,8 @@ Read the grimoire-overlay skill for detailed property schema and conventions.
 {% if include_sources %}| `/ingest-source` | Extract entities from source material into `world/` | When adding new source material (chapters, wiki pages, reference texts) |
 {% endif %}| `/lint-canon` | Validate property completeness, canon consistency, wikilink health, orphan detection | After every 10-20 new entities, or after a batch of edits |
 | `/audit-conflicts` | Surface contradictions, duplicates, and relationship mismatches across entities | Once you have 20+ entities, or after ingesting from a new source that may conflict with existing canon |
+{% if project_type == 'ttrpg' %}| `/update-primer` | Regenerate the player-facing world primer from revealed canon | After revealing new entities to players, or before sharing the primer |
+{% endif %}
 
 ### Recommended Workflow
 
