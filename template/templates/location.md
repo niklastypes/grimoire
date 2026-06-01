@@ -11,7 +11,7 @@ tags: []
 # Location Name
 
 > [!infobox]
-> ![[location-name.png]]
+> ![[assets/images/locations/location-name.png]]
 >
 > *A one-to-two sentence summary of this place: what it is, what it feels like, and why it matters.*
 
