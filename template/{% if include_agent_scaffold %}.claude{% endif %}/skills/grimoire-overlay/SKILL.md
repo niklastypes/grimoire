@@ -56,19 +56,29 @@ Type-specific properties are defined in each template's frontmatter. Always pres
 
 When ingesting source material into the vault:
 
-1. **Source note** goes in `sources/` with attribution metadata
+1. **Raw source** goes in a named subdirectory of `sources/` (`chapters/`, `wiki/`, `fragments/`, etc.)
 2. **Entities extracted** go in `world/` using the appropriate template
 3. **Check for existing entities** before creating new ones. Search `world/` by name and aliases
 4. **Update existing entities** additively. Don't remove existing content, add new information
-5. **Create wikilinks** between related entities discovered in the source
-6. **Flag ambiguities** for the user rather than guessing
+5. **Per-source summary** goes in `sources/summaries/`, mirroring the raw source filename
+6. **Running synthesis** (`sources/synthesis.md`) updated to reflect the new source's contribution
+7. **Create wikilinks** between related entities discovered in the source
+8. **Flag ambiguities** for the user rather than guessing
+
+**Three-level navigation for source knowledge:**
+- `sources/synthesis.md` — read first. Running world understanding.
+- `sources/summaries/<source>.md` — drill into one source's contribution.
+- `sources/<subdir>/<source>.md` — raw text for looking things up.
 
 ## Folder Reference
 
 | Folder | What goes here |
 |---|---|
 | `world/` | All entities: characters, locations, items, factions, lore (flat) |
-| `sources/` | Raw/cleaned source material with attribution |
+| `sources/` | Source material, summaries, and running synthesis |
+| `sources/<subdir>/` | Raw sources organized by shape: `chapters/`, `wiki/`, `fragments/` |
+| `sources/summaries/` | Per-source summaries (mirrors raw source filenames) |
+| `sources/synthesis.md` | Running world understanding (always read first) |
 | `story/` | Scenes, plot arcs, narrative structure |
 | `mechanics/` | Game systems, rules, stat blocks |
 | `play/` | Session prep, session logs, encounters (TTRPG only) |
