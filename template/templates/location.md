@@ -8,6 +8,8 @@ source: []
 tags: []
 ---
 
+# Location Name
+
 > [!infobox]
 > ![[location-name.png]]
 >

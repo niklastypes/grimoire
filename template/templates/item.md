@@ -11,6 +11,8 @@ links-to-secret:
 found-at:
 ---
 
+# Item Name
+
 > [!infobox]
 > ![[item-name.png]]
 >

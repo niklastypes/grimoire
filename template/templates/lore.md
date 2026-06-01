@@ -10,6 +10,8 @@ links-to-secret:
 found-at:
 ---
 
+# Lore Entry Name
+
 > [!infobox]
 > ![[lore-name.png]]
 >

@@ -8,6 +8,8 @@ source: []
 tags: []
 ---
 
+# Faction Name
+
 > [!infobox]
 > ![[faction-name.png]]
 >

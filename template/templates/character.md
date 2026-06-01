@@ -15,6 +15,8 @@ links-to-secret:
 found-at:
 ---
 
+# Character Name
+
 > [!infobox]
 > ![[character-name.png]]
 >
