@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.4.0](https://github.com/niklastypes/grimoire/compare/v0.3.0...v0.4.0) (2026-06-01)
+
+
+### Features
+
+* add audit-conflicts command for cross-entity contradiction detection ([3f4420b](https://github.com/niklastypes/grimoire/commit/3f4420bd4b2a4fa495371d4c0e2974e972f80cf9))
+* add canon health views and synthesis link to home dashboard ([a88b1b6](https://github.com/niklastypes/grimoire/commit/a88b1b6496e80941b08cdfbece463c079d4b5a7a))
+* add clues, by-source, and unrevealed-secrets Bases views ([2731683](https://github.com/niklastypes/grimoire/commit/2731683b3f17846a1ed36eb0ca0862a1d4c50b71))
+* add lint-canon command for property and canon validation ([d3e2710](https://github.com/niklastypes/grimoire/commit/d3e2710f2025897d258b6ffe0f6fb480d8a97005))
+* add orphan entity detection to lint-canon ([09495cb](https://github.com/niklastypes/grimoire/commit/09495cbf69708389a9f40c1ea6e5cdff3dcf8fce))
+* add property value discipline rule to ingest-source ([fc52d37](https://github.com/niklastypes/grimoire/commit/fc52d37100371fe812ad2a5304c8216de050dc4d))
+* add property value discipline rules to grimoire-overlay ([f40ecc6](https://github.com/niklastypes/grimoire/commit/f40ecc692c9885f831f46583fbba22130eee5918))
+* add update-primer command for player-facing world briefing ([1389845](https://github.com/niklastypes/grimoire/commit/1389845cea39ae4f7a1523dc68b458836abcf9fd))
+* document type:moc convention for downstream consumers ([7235f5a](https://github.com/niklastypes/grimoire/commit/7235f5ac6d77db1f2070dd6bc42ef80597883e06))
+* upgrade ingest-source to v2 with summaries and synthesis ([0effff3](https://github.com/niklastypes/grimoire/commit/0effff38cead639c4924b4e2097407695d920e1a))
+
+
+### Bug Fixes
+
+* render recommended workflow for all agent scaffold vaults ([b58b3c8](https://github.com/niklastypes/grimoire/commit/b58b3c8be1f4f244c94e812d0fbedef456f00235))
+
 ## [0.3.0](https://github.com/niklastypes/grimoire/compare/v0.2.0...v0.3.0) (2026-05-29)
 
 
