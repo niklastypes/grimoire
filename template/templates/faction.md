@@ -11,7 +11,7 @@ tags: []
 # Faction Name
 
 > [!infobox]
-> ![[faction-name.png]]
+> ![[assets/images/factions/faction-name.png]]
 >
 > *A one-to-two sentence summary of what this faction is, what they want, and why they matter.*
 
