@@ -52,15 +52,37 @@ All notes use frontmatter properties:
 - Set `genai: false` for human-written content, `true` for AI-generated.
 {% if include_sources %}
 ## Source Ingestion
+
+### Source Structure
+
+```
+sources/
+├── synthesis.md               # running world understanding (read this first)
+├── <raw-source-dir>/          # chapters/, wiki/, fragments/, etc.
+│   ├── source-01.md
+│   └── source-02.md
+└── summaries/                 # mirrors raw source structure
+    ├── source-01.md
+    └── source-02.md
+```
+
+Three navigation levels for understanding the world:
+1. **`synthesis.md`** — the running understanding of the entire world. Start here.
+2. **`summaries/`** — per-source summaries. What did this specific source contribute?
+3. **Raw sources** — the original text. Look something up when summaries aren't enough.
+
+### Ingestion Workflow
 {% if include_agent_scaffold %}
-To ingest source material into this vault, use the `/ingest-source` command. The workflow:
+Use the `/ingest-source` command. It handles the full workflow:
 {% else %}
 To ingest source material into this vault:
 {% endif %}
-1. Source material (chapter, wiki page, reference) goes into `sources/` as a source note
-2. Entities are extracted and created/updated in `world/` using templates
-3. Existing entities are updated additively (never overwrite user edits)
-4. Wikilinks are created between related entities
+1. Raw source saved in a named subdirectory of `sources/` (e.g., `chapters/`, `wiki/`, `fragments/`)
+2. Entities extracted and created/updated in `world/` using templates
+3. Per-source summary written to `sources/summaries/`
+4. Running synthesis (`sources/synthesis.md`) updated
+5. Existing entities updated additively (never overwrite user edits)
+6. Wikilinks created between related entities
 
 When creating entities from source material, set `canon: true` and `source` to the attribution string. Set `genai: false` (the source is human-written, even if an agent does the extraction).
 {% endif %}
