@@ -18,7 +18,7 @@ found-at:
 # Character Name
 
 > [!infobox]
-> ![[character-name.png]]
+> ![[assets/images/characters/character-name.png]]
 >
 > *A one-to-two sentence summary of who this character is, what drives them, and why they matter to the story.*
 
