@@ -24,8 +24,7 @@ For each entity note, check that all **required base properties** are present an
 | `type` | all entities | `character`, `location`, `item`, `faction`, `lore`, `scene` |
 | `status` | all entities | `draft`, `ready`, `revealed`, `retired` |
 | `canon` | all entities | `true`, `false` |
-| `source` | all entities | any non-empty string (e.g., `"self"`, `"Author 2024"`) |
-| `genai` | all entities | `true`, `false` |
+| `source` | all entities | list of wikilinks (may be empty for invented content) |
 | `tags` | all entities | list (may be empty) |
 
 Then check **type-specific required properties**:
@@ -54,7 +53,7 @@ Check for logical inconsistencies in how canon properties are used:
 
 2. **Clue without secret**: if `clue: true` but `links-to-secret` is empty, the clue points nowhere.
 
-3. **GenAI provenance**: if `genai: true` and `source` points to a human-written source, flag for review. Convention: `genai: false` for entities extracted from human-written sources, even though an agent did the extraction.
+3. **Source wikilinks resolve**: each wikilink in the `source` list should point to an actual file in `sources/`. Flag broken source references.
 
 4. **Status lifecycle**: `revealed` or `retired` entities should have `canon: true`. Non-canonical content doesn't get revealed to players.
 
@@ -98,8 +97,8 @@ Issues that indicate potential problems.
 ### Info
 
 - N entities still in `draft` status
-- N entities with `genai: true`
-- Source coverage: N unique sources referenced
+- N entities with empty `source` (invented, no source attribution)
+- Source coverage: N unique source notes referenced across N entities
 - Broken wikilinks: [[target-1]], [[target-2]] (or "none")
 - Orphan entities (no incoming links): [[orphan-1]], [[orphan-2]] (or "none")
 

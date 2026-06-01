@@ -32,8 +32,7 @@ All notes use frontmatter properties:
 | `type` | `character`, `location`, `item`, `faction`, `lore`, `scene`{% if project_type == 'ttrpg' %}, `session-prep`, `session-log`, `encounter`{% endif %} | Note type identifier |
 | `status` | `draft`, `ready`, `revealed`, `retired` | Content lifecycle |
 | `canon` | `true` / `false` | Is this canonical to the universe? |
-| `source` | string | Attribution (e.g., `"self"`, `"Author 2024"`) |
-| `genai` | `true` / `false` | AI-generated content flag |
+| `source` | list of wikilinks | Source notes this entity was derived from (e.g., `["[[chapter-01]]"]`). Empty for invented content. |
 
 ## Conventions
 
@@ -48,8 +47,7 @@ All notes use frontmatter properties:
 
 - Default `canon: true`. Everything established IS canon unless marked otherwise.
 - Mark `canon: false` for non-canonical additions (filler NPCs, what-if scenarios).
-- Always set `source` to a meaningful attribution string. Use `"self"` for original content.
-- Set `genai: false` for human-written content, `true` for AI-generated.
+- Set `source` to wikilinks pointing to source notes the entity was derived from. Leave empty for invented content.
 {% if include_sources %}
 ## Source Ingestion
 
@@ -84,7 +82,7 @@ To ingest source material into this vault:
 5. Existing entities updated additively (never overwrite user edits)
 6. Wikilinks created between related entities
 
-When creating entities from source material, set `canon: true` and `source` to the attribution string. Set `genai: false` (the source is human-written, even if an agent does the extraction).
+When creating entities from source material, set `canon: true` and `source` to wikilinks pointing to the source notes.
 {% endif %}
 {% if include_agent_scaffold %}
 ## Agent Scaffold
@@ -151,4 +149,3 @@ Read the grimoire-overlay skill for detailed property schema and conventions.
 - Keep `world/` flat (no subfolders), use properties and links for organization
 - Use Bases views in `views/` to browse and filter entities
 - Set `canon: false` for non-canonical content
-- Set `genai: true` on any AI-generated content

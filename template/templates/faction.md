@@ -2,11 +2,10 @@
 type: faction
 status: draft
 alignment:
-leader:
+leader: []
 canon: true
-source: ""
+source: []
 tags: []
-genai: false
 ---
 
 > [!infobox]
@@ -30,8 +29,7 @@ genai: false
 
 > [!tip]- Property Guide
 > - **alignment:** the faction's moral or political alignment
-> - **leader:** wikilink to the character leading this faction
+> - **leader:** list of wikilinks to characters leading this faction
 > - **status:** `draft` → `ready` → `revealed` → `retired`
 > - **canon:** `true` (canonical to the universe) or `false` (homebrew, what-if)
-> - **source:** attribution, e.g. `"self"`, `"Author 2024"`
-> - **genai:** `true` if AI-generated, `false` otherwise
+> - **source:** list of wikilinks to source notes (e.g., `["[[chapter-01]]"]`)

@@ -86,8 +86,10 @@ Lean by design. Player-specific details are filled post-generation.
 - `type`: `character | location | item | faction | lore | scene | session-prep | session-log | encounter`
 - `status`: `draft | ready | revealed | retired`
 - `canon`: `true | false` (default true). Is this canonical to the universe?
-- `source`: attribution string (`"Author 2024"`, `"self"`)
-- `genai`: `true | false`. AI-generated content provenance flag.
+- `source`: list of wikilinks to source notes (e.g., `["[[chapter-01]]", "[[chapter-03]]"]`). Empty for invented content.
+- `faction`: list of wikilinks (characters can belong to multiple factions)
+- `leader`: list of wikilinks (factions can have multiple leaders)
+- `location` (scenes): list of wikilinks (scenes can span locations)
 
 ## Template Repo Layout
 

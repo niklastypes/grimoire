@@ -32,9 +32,8 @@ All entity notes share these base properties:
 | `type` | string | (per template) | Entity type: `character`, `location`, `item`, `faction`, `lore`, `scene` |
 | `status` | string | `draft` | Lifecycle: `draft` → `ready` → `revealed` → `retired` |
 | `canon` | boolean | `true` | Is this canonical to the universe? |
-| `source` | string | `""` | Attribution: `"self"`, `"Author 2024"`, `"Fandom Wiki"` |
+| `source` | list | `[]` | Wikilinks to source notes: `["[[chapter-01]]", "[[chapter-03]]"]` |
 | `tags` | list | `[]` | Freeform tags |
-| `genai` | boolean | `false` | Was this content AI-generated? |
 
 Type-specific properties are defined in each template's frontmatter. Always preserve the full schema when creating notes.
 
@@ -43,11 +42,14 @@ Type-specific properties are defined in each template's frontmatter. Always pres
 **Before assigning a value to any property, check what values already exist in the vault.** This prevents value sprawl that breaks Bases aggregation.
 
 Specifically:
-- **`faction`**: search `world/` for existing faction notes. Use the exact filename (e.g., `"[[the-chromeria]]"`, not `"The Chromeria"` or `"Chromeria faction"`). If no faction note exists yet, create one first, then reference it.
+- **`source`**: list of wikilinks to source notes (e.g., `["[[chapter-01]]", "[[chapter-03]]"]`). Always point to actual files in `sources/`.
+- **`faction`**: list of wikilinks to faction notes (e.g., `["[[the-chromeria]]"]`). If no faction note exists yet, create one first, then reference it.
+- **`leader`**: list of wikilinks to character notes leading the faction.
 - **`character-type`**: only `pc` or `npc`. No other values.
 - **`category`** (lore): only `technology`, `history`, `culture`, `geography`, `politics`, `religion`, `science`, `event`. No other values.
 - **`status`**: only `draft`, `ready`, `revealed`, `retired`. No other values.
-- **`district`**, **`parent-location`**, **`held-by`**, **`leader`**: always use `"[[wikilink]]"` format pointing to an existing note. If the target doesn't exist yet, create it first.
+- **`district`**, **`parent-location`**, **`held-by`**: always use `"[[wikilink]]"` format pointing to an existing note. If the target doesn't exist yet, create it first.
+- **`location`** (scenes): list of wikilinks to location notes.
 - **`tags`**: check existing tags in the vault before creating new ones. Reuse over invent.
 
 **Rule of thumb:** if a property value would appear in a Bases "group by" or "filter by" query, it must be consistent across all notes. One wrong spelling breaks the group.
@@ -56,8 +58,7 @@ Specifically:
 
 - **Default `canon: true`.** Everything you establish IS canon unless marked otherwise.
 - **Mark `canon: false`** for non-canonical additions (filler NPCs, what-if scenarios, homebrew that contradicts source material).
-- **Always set `source`** to a meaningful attribution string. Use `"self"` for original content.
-- **Set `genai: false`** for human-written content, `true` for AI-generated content. The agent extracting entities from a human-written source sets `genai: false` (the source is human-written).
+- **Always set `source`** to wikilinks pointing to the source notes the entity was derived from. For original content, leave `source: []` empty (the absence of sources means it was invented by the user or agent).
 
 ## Wikilink Conventions
 

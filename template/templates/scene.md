@@ -3,12 +3,11 @@ type: scene
 status: draft
 act:
 order:
-location:
+location: []
 characters: []
 canon: true
-source: ""
+source: []
 tags: []
-genai: false
 ---
 
 ## Setup
@@ -22,8 +21,8 @@ genai: false
 > [!tip]- Property Guide
 > - **act:** which act or story arc this scene belongs to
 > - **order:** numeric position within the act
-> - **location:** wikilink to the scene's location
+> - **location:** list of wikilinks to locations in this scene
 > - **characters:** list of wikilinks to characters in this scene
 > - **status:** `draft` → `ready` → `revealed` → `retired`
 > - **canon:** `true` (canonical to the universe) or `false` (homebrew, what-if)
-> - **genai:** `true` if AI-generated, `false` otherwise
+> - **source:** list of wikilinks to source notes (e.g., `["[[chapter-01]]"]`)

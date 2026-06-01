@@ -2,15 +2,14 @@
 type: character
 character-type:
 player:
-faction:
+faction: []
 role:
 status: draft
 alive: true
 hp:
 canon: true
-source: ""
+source: []
 tags: []
-genai: false
 clue: false
 links-to-secret:
 found-at:
@@ -37,10 +36,10 @@ found-at:
 
 > [!tip]- Property Guide
 > - **character-type:** `pc` or `npc`
+> - **faction:** list of wikilinks to factions this character belongs to
 > - **status:** `draft` → `ready` → `revealed` → `retired`
 > - **canon:** `true` (canonical to the universe) or `false` (homebrew, what-if)
-> - **source:** attribution, e.g. `"self"`, `"Author 2024"`
-> - **genai:** `true` if AI-generated, `false` otherwise
+> - **source:** list of wikilinks to source notes (e.g., `["[[chapter-01]]", "[[chapter-03]]"]`)
 > - **clue:** `true` if this character is a clue or carries one
 > - **links-to-secret:** wikilink to the secret this clue connects to
 > - **found-at:** wikilink to the location where this character can be found

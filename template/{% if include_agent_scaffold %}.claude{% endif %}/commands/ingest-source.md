@@ -89,9 +89,8 @@ This step is critical for incremental ingestion. The same character may appear a
    - `type`: matching the template
    - `status: draft`
    - `canon: true` (source-derived content is canonical)
-   - `source: "<attribution string>"`
-   - `genai: false` (human-written source, even though an agent extracts it)
-   - Type-specific properties (faction, role, district, etc.) where inferable from source
+   - `source: ["[[<source-note-filename>]]"]` (wikilink to the source note created in Step 1)
+   - Type-specific properties (faction, role, district, etc.) where inferable from source. Use `[[wikilinks]]` for list properties (faction, leader, location). Check existing notes before creating new values.
 4. Fill in body sections from the source material
 5. Add `[[wikilinks]]` to related entities (other characters, locations, factions mentioned)
 6. Keep the `[!warning]- GM Secrets` section for information that should be hidden from players
@@ -99,10 +98,11 @@ This step is critical for incremental ingestion. The same character may appear a
 
 **For each existing entity:**
 1. Read the existing note
-2. Add new information from this source (be additive, do not remove existing content)
-3. Add new wikilinks to entities discovered in this source
-4. Update frontmatter properties if the source provides new information (e.g., `faction` was empty, now known)
-5. If the source contradicts existing content, flag it for the user rather than overwriting
+2. Append this source's wikilink to the `source` list (if not already present)
+3. Add new information from this source (be additive, do not remove existing content)
+4. Add new wikilinks to entities discovered in this source
+5. Update frontmatter properties if the source provides new information (e.g., `faction` was empty, now known). For list properties, append to the list.
+6. If the source contradicts existing content, flag it for the user rather than overwriting
 
 **Content language:** write entity content in the same language as the source material. Vault structure (property keys, section headers) stays English.
 
@@ -209,8 +209,8 @@ Downstream commands (`compose-scene`, `audit-conflicts`, etc.) should read `synt
 - Filenames are lowercase kebab-case
 - Always use the correct template's frontmatter schema
 - Set `canon: true` for source-derived content
-- Set `source` to the attribution string the user provided
-- Set `genai: false` (the source material is human-written)
+- Set `source` to a list containing the wikilink to the source note (e.g., `["[[chapter-01]]"]`)
+- For existing entities, append the new source to the list (don't replace)
 - Write entity and summary content in the same language as the source material
 - Create `[[wikilinks]]` between related entities
 - When updating existing entities, be additive (don't remove existing content)
