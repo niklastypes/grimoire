@@ -43,62 +43,61 @@ Two requirements pull against each other:
 1. **Pure theming** — content stays `[[astarion]]`, no icon named in prose.
 2. **Per-entity raster portraits** — each note shows its own image, BG3-style.
 
-BG3 satisfies #2 by violating #1. We need both. Here's the option space:
+BG3 satisfies #2 by violating #1. We want both. The option space we evaluated:
 
 | Approach | Per-entity raster portrait | Pure theming (clean content) | No plugin | Cost / caveat |
 |---|---|---|---|---|
-| **Generated CSS snippet** (recommended) | ✅ | ✅ | ✅ | Needs a regeneration step when portraits change |
-| Iconize plugin | ❌ SVG/font only (PNG must be converted) | ✅ | ❌ community dep | Raster portraits unsupported; inline-link feature unconfirmed |
+| **Iconize plugin** (DECIDED) | ✅ via SVG-wrapped raster | ✅ | ❌ community dep | Inline "icons in links" is a built-in toggle; raster needs SVG wrapping; first community plugin Grimoire ships |
+| Generated CSS snippet | ✅ (base64 data URIs) | ✅ | ✅ | Fragile `data-href` matching + unverified `url()`/render gates; we'd own the generator. **Kept as fallback** if Iconize render fails |
 | Pure hand-written CSS | ❌ one glyph per *type* only | ✅ | ✅ | CSS can't read a *target* note's frontmatter |
 | Manual inline embed (`![[ox.png\|18]] [[ox]]`) | ✅ | ❌ icon in content | ✅ | Tedious, clutters source, this is the BG3 model |
 
-**Why pure CSS alone can't do it:** Obsidian renders an internal link as `<a class="internal-link" data-href="astarion">`. CSS can match `data-href` and inject a `::before` image, but it cannot look up *that target note's* frontmatter to find which image. So hand-written CSS can only give "all characters share one glyph," not per-entity portraits.
+**Decision (2026-06-21): adopt Iconize.** It ships an "icons in links" toggle that renders the icon assigned to a note inline before every link to that note, exactly the BG3 mechanic, and robustly across Live Preview and Reading view. That removes the fragile, self-owned parts of the CSS approach (`data-href` matching, `url()` sandboxing, dual-view rendering). Iconize's one limitation is that custom icons are SVG/font/emoji only, no raster, so portraits are fed in as **SVG files that wrap a base64 raster** (`<image href="data:...">`). The generated-CSS approach is retained only as a documented fallback if SVG-wrapped rasters don't render inline.
 
-### Recommendation: generated CSS snippet
+**Why pure CSS alone can't do it:** Obsidian renders an internal link as `<a class="internal-link" data-href="astarion">`. CSS can match `data-href` and inject a `::before` image, but it cannot look up *that target note's* frontmatter to find which image. So hand-written CSS can only give "all characters share one glyph," not per-entity portraits, which is also why the type-glyph fallback below *is* pure-CSS-cheap while portraits are not.
 
-A Grimoire command scans notes carrying a `portrait` property and emits a snippet into `.obsidian/snippets/portrait-icons.css`:
+### The chosen design: three stacked layers
 
-```css
-a.internal-link[data-href="astarion"]::before {
-  content: "";
-  display: inline-block;
-  width: 18px; height: 18px;
-  margin-right: 0.25em;
-  background-image: url("assets/images/characters/astarion.png");
-  background-size: cover;
-  border-radius: 50%;
-  vertical-align: text-bottom;
-}
-/* ...one rule per entity with a portrait... */
-```
+The two ambitions (every link iconified vs. real per-entity faces) stack instead of competing:
 
-This is the only approach that satisfies **all four** wants at once: per-entity raster portraits, clean content, no plugin, and it's genuinely theming (a CSS snippet, regenerable, deletable without touching notes).
+1. **`portrait` frontmatter property** — source image, drives a Bases **card view** (gallery) and is the source for portrait icons. Zero plugin, zero risk. *(Shipped.)*
+2. **Default layer: per-type glyphs** — a per-type `icon` frontmatter default shipped in each template (`character` → `LiUser`, `location` → `LiMapPin`, `item` → `LiGem`, `faction` → `LiFlag`, `lore` → `LiScroll`), rendered by Iconize's *icons-in-links*. Note: Iconize **custom rules can't reliably match on a `type` frontmatter** (rules are filename/path-regex), and `world/` is flat, so the per-note `icon` default in the template is the dependable channel, not a rule. Every link gets *an* icon immediately, and this is the **permanent graceful fallback** for any entity that has no portrait art yet. *(Shipped.)*
+3. **Override layer: per-entity portraits** — a generator turns each note's `portrait` into an SVG-wrapped raster icon and rewrites that note's `icon` value to it, overriding the type glyph. BG3-exact, *where art exists*. *(Next.)*
 
-**Why it fits Grimoire's grain:**
+Net behavior: an entity with art shows its face; one without shows its type glyph; no link is ever icon-less.
 
-- `research.md` already rules that **CSS snippets are not a plugin decision** and ship in `.obsidian/snippets/`. This slots into a decision already made, it doesn't open a new plugin question.
-- Generating artifacts from vault content is the same muscle as `ingest-source`. A `refresh-portraits` command (or a step folded into an existing command) is idiomatic.
-- It degrades gracefully: a note without a `portrait` simply gets no icon, the link still works. Pull the snippet and the vault is untouched plain markdown (the portability moat in `research.md`).
+### Why the `portrait` property earns its place (corrected rationale)
 
-**It's tier-3 "custom," but cheaply.** Per the plugin hierarchy, tier 3 needs justification. This isn't a plugin to maintain, it's a generator emitting static CSS, and tiers 1–2 genuinely can't deliver per-entity raster portraits as pure theming. The gap is real and the value (the single feature Niklas pointed at) justifies it.
+The earlier draft called this property "the single source of truth for the infobox and the CSS." That was wrong: **Obsidian markdown can't render a frontmatter value as an image embed without a plugin**, so the infobox still needs its literal body embed (`> ![[character-name.png]]`). The property is therefore a *second* declaration, not a unifying one.
 
-### The keystone template change: a `portrait` property
-
-The whole system hinges on one frontmatter field. Today the portrait is **hardcoded in the body** (`> ![[character-name.png]]` inside the infobox callout), which is human-readable but not machine-addressable. Promote it to frontmatter so both the infobox **and** the CSS generator read one source of truth:
+It still earns its place, for a different reason: **Bases**. A card/gallery view can only render an image from a frontmatter property, never from a body embed. That independent benefit (plus being the source the portrait generator reads) justifies the one-filename duplication, which `lint-canon` can later check stays in sync.
 
 ```yaml
-portrait: "[[astarion.png]]"   # or a path; optional, nullable
+portrait: "[[character-name.png]]"   # optional/nullable; matches the infobox embed
 ```
 
-The infobox callout then references the property instead of a hardcoded filename. This is the enabling change, everything else in §1 depends on it.
+### Sequencing (decided 2026-06-21)
+
+**Glyphs + cards now, portraits next.** Layers 1–2 shipped (guaranteed to work). Layer 3 is prototyped separately to de-risk the one open gate before committing it.
+
+### Plugin-shipping decision (decided 2026-06-24)
+
+Grimoire shipped zero community plugins before this; Iconize is the first, so this sets the precedent. **Chosen: config + documented install** (not vendoring the plugin binary). What ships in the template:
+
+- `.obsidian/community-plugins.json` lists `obsidian-icon-folder` (so it auto-enables once installed).
+- `.obsidian/plugins/obsidian-icon-folder/data.json` pre-seeds the settings we depend on: `iconInFrontmatterEnabled: true` (the only non-default), plus `iconsInLinksEnabled`, `iconsInNotesEnabled`, `lucideIconPackType: native`, field name `icon`.
+- Per-type `icon` defaults in the five entity templates.
+- A one-line README step: turn off Restricted Mode → Browse → install Iconize → Enable.
+
+**No icon pack is bundled.** Iconize uses Obsidian's **native Lucide** (`lucideIconPackType: native`, the plugin default), prefix `Li`, icon id = `Li` + PascalCase of the Lucide name (`map-pin` → `LiMapPin`). This sidesteps shipping pack zips entirely. Verified against Iconize `src/settings/data.ts` and `src/icon-pack-manager/` at v2.14.7.
 
 ### Open questions (icon system)
 
-- **Regeneration trigger.** Manual command vs a hook on note create/rename. Start manual (`refresh-portraits`), reconsider if friction is real, mirrors the Templater "static is fine for v1" stance.
-- **`data-href` stability.** Confirm Obsidian's `data-href` matches the note basename/path we'd key on, including for aliased links and links with display text. Needs a quick prototype check.
-- **Portrait shape.** BG3 uses circular character portraits but square-ish item/spell sprites. Suggest: `border-radius: 50%` for `type: character`, square for items/locations. The generator can branch on `type`.
-- **Retina / sizing.** 18px at 2× = 36px source minimum. Document a recommended portrait source size.
-- **Reading view vs editing view.** Verify the snippet applies in both (Live Preview + Reading). CSS `::before` on `.internal-link` generally does, confirm in prototype.
+- **SVG-wrapped raster render (the gate).** Does Iconize render an SVG whose content is an embedded base64 raster, inline in links, in both Live Preview and Reading view? Blocks layer 3 only. Prototype before building the generator.
+- **Agent-created notes need `icon` + `portrait` too.** The template covers human-created notes (Ctrl/Cmd+T), but the primary workflow is `/ingest-source`, which writes notes directly. The grimoire-overlay skill / ingest-source command must set `icon` (per type) and `portrait` on generated entities, else agent-built vaults get no glyphs. **Clear next follow-up.**
+- **Pre-seeded `data.json` merge.** Confirm Obsidian/Iconize loads our pre-seeded `data.json` on first install rather than overwriting it with defaults (standard `Object.assign(DEFAULT, loadData())` suggests yes; verify on first open).
+- **Portrait shape.** Circular for `type: character`, slightly-rounded/square for items/locations, mirroring BG3. The generator branches on `type`.
+- **Retina / sizing.** Document a recommended portrait source size (~2× the rendered icon).
 
 ---
 
@@ -132,7 +131,7 @@ Two cross-cutting moves, then per-template specifics. Style-manual restraint app
 
 ### Cross-cutting
 
-1. **Add a `portrait` property** to every entity template (character, location, item, faction, lore). Optional/nullable. Powers the infobox and the icon CSS. Point the infobox callout at the property. *(Keystone, see §1.)*
+1. **Add a `portrait` property** to every entity template (character, location, item, faction, lore). Optional/nullable. Drives the Bases card view (gallery) and the portrait icon generator. The infobox keeps its literal body embed (markdown can't render a frontmatter image without a plugin), so the property is a parallel declaration, see §1. **[DONE]**
 2. **Prefer dynamic over hand-maintained lists.** BG3 *hand-curates* "Characters in this location" and "Related quests." Grimoire should **generate these from wikilinks via Bases embeds**, not static prose. This is the native translation of BG3's curated sections, and it stays DRY: a character's `found-at` / `faction` already encodes the relationship, so a location's "Characters here" and a faction's "Members" should be Bases views, not lists a human keeps in sync.
 
 ### Per template
