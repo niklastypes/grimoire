@@ -1,0 +1,8 @@
+{
+  "migrated": 2,
+  "iconInFrontmatterEnabled": true,
+  "iconInFrontmatterFieldName": "icon",
+  "iconsInLinksEnabled": true,
+  "iconsInNotesEnabled": true,
+  "lucideIconPackType": "native"
+}

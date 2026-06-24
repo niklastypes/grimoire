@@ -1,5 +1,7 @@
 ---
 type: location
+icon: LiMapPin
+portrait: "[[location-name.png]]"
 status: draft
 district:
 parent-location:
@@ -29,6 +31,8 @@ tags: []
 ## Notes
 
 > [!tip]- Property Guide
+> - **icon:** Iconize glyph shown before links to this note (default `LiMapPin`). The portrait generator overrides this with the entity's image once art exists.
+> - **portrait:** wikilink to this entity's image; powers the gallery card view (and, later, inline link icons). Keep in sync with the infobox image.
 > - **status:** `draft` → `ready` → `revealed` → `retired`
 > - **district:** the area or region this location belongs to
 > - **parent-location:** wikilink to the containing location

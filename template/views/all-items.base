@@ -4,6 +4,8 @@ filters:
     - 'type == "item"'
 
 properties:
+  portrait:
+    displayName: Portrait
   status:
     displayName: Status
   held-by:
@@ -12,5 +14,12 @@ properties:
     displayName: Canon
 
 views:
+  - type: cards
+    name: Gallery
+    order:
+      - portrait
+      - file.name
+      - held-by
+      - status
   - type: table
     name: All Items

@@ -4,6 +4,8 @@ filters:
     - 'type == "lore"'
 
 properties:
+  portrait:
+    displayName: Portrait
   status:
     displayName: Status
   category:
@@ -12,5 +14,12 @@ properties:
     displayName: Canon
 
 views:
+  - type: cards
+    name: Gallery
+    order:
+      - portrait
+      - file.name
+      - category
+      - status
   - type: table
     name: All Lore

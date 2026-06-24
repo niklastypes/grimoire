@@ -1,5 +1,7 @@
 ---
 type: faction
+icon: LiFlag
+portrait: "[[faction-name.png]]"
 status: draft
 alignment:
 leader: []
@@ -29,6 +31,8 @@ tags: []
 ## Notes
 
 > [!tip]- Property Guide
+> - **icon:** Iconize glyph shown before links to this note (default `LiFlag`). The portrait generator overrides this with the faction's emblem once art exists.
+> - **portrait:** wikilink to this entity's image (emblem or sigil); powers the gallery card view (and, later, inline link icons). Keep in sync with the infobox image.
 > - **alignment:** the faction's moral or political alignment
 > - **leader:** list of wikilinks to characters leading this faction
 > - **status:** `draft` → `ready` → `revealed` → `retired`

@@ -1,5 +1,7 @@
 ---
 type: item
+icon: LiGem
+portrait: "[[item-name.png]]"
 status: draft
 held-by:
 prop: false
@@ -30,6 +32,8 @@ found-at:
 ## Notes
 
 > [!tip]- Property Guide
+> - **icon:** Iconize glyph shown before links to this note (default `LiGem`). The portrait generator overrides this with the item's image once art exists.
+> - **portrait:** wikilink to this entity's image; powers the gallery card view (and, later, inline link icons). Keep in sync with the infobox image.
 > - **held-by:** wikilink to the character currently holding this item
 > - **prop:** `true` if this is a scene prop (not plot-critical), `false` otherwise
 > - **status:** `draft` → `ready` → `revealed` → `retired`

@@ -4,6 +4,8 @@ filters:
     - 'type == "character"'
 
 properties:
+  portrait:
+    displayName: Portrait
   character-type:
     displayName: Type
   status:
@@ -16,5 +18,12 @@ properties:
     displayName: Canon
 
 views:
+  - type: cards
+    name: Gallery
+    order:
+      - portrait
+      - file.name
+      - character-type
+      - status
   - type: table
     name: All Characters

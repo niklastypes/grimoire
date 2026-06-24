@@ -4,6 +4,8 @@ filters:
     - 'type == "faction"'
 
 properties:
+  portrait:
+    displayName: Portrait
   status:
     displayName: Status
   alignment:
@@ -14,5 +16,12 @@ properties:
     displayName: Canon
 
 views:
+  - type: cards
+    name: Gallery
+    order:
+      - portrait
+      - file.name
+      - alignment
+      - status
   - type: table
     name: All Factions

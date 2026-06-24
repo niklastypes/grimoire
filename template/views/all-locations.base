@@ -4,6 +4,8 @@ filters:
     - 'type == "location"'
 
 properties:
+  portrait:
+    displayName: Portrait
   status:
     displayName: Status
   district:
@@ -14,5 +16,12 @@ properties:
     displayName: Canon
 
 views:
+  - type: cards
+    name: Gallery
+    order:
+      - portrait
+      - file.name
+      - district
+      - status
   - type: table
     name: All Locations

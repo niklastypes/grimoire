@@ -1,5 +1,7 @@
 ---
 type: character
+icon: LiUser
+portrait: "[[character-name.png]]"
 character-type:
 player:
 faction: []
@@ -34,6 +36,8 @@ found-at:
 ## Notes
 
 > [!tip]- Property Guide
+> - **icon:** Iconize glyph shown before links to this note (default `LiUser`). The portrait generator overrides this with the entity's face once art exists.
+> - **portrait:** wikilink to this entity's image; powers the gallery card view (and, later, inline link icons). Keep in sync with the infobox image.
 > - **character-type:** `pc` or `npc`
 > - **faction:** list of wikilinks to factions this character belongs to
 > - **status:** `draft` → `ready` → `revealed` → `retired`
