@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.7.0](https://github.com/niklastypes/grimoire/compare/v0.6.1...v0.7.0) (2026-06-26)
+
+
+### Features
+
+* add entity portraits, gallery card views, and Iconize link glyphs ([4542787](https://github.com/niklastypes/grimoire/commit/4542787ce5c1468815c62216627f6903eb040379))
+
+
+### Bug Fixes
+
+* use full asset path for portrait property to match infobox ([1169ad5](https://github.com/niklastypes/grimoire/commit/1169ad5a887b2d70b86bd513df58c77b3fccfa2f))
+
 ## [0.6.1](https://github.com/niklastypes/grimoire/compare/v0.6.0...v0.6.1) (2026-06-01)
 
 
