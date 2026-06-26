@@ -1,7 +1,7 @@
 ---
 type: faction
 icon: LiFlag
-portrait: "[[faction-name.png]]"
+portrait: "[[assets/images/factions/faction-name.png]]"
 status: draft
 alignment:
 leader: []
