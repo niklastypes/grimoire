@@ -1,7 +1,7 @@
 ---
 type: item
 icon: LiGem
-portrait: "[[item-name.png]]"
+portrait: "[[assets/images/items/item-name.png]]"
 status: draft
 held-by:
 prop: false

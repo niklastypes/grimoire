@@ -1,7 +1,7 @@
 ---
 type: character
 icon: LiUser
-portrait: "[[character-name.png]]"
+portrait: "[[assets/images/characters/character-name.png]]"
 character-type:
 player:
 faction: []

@@ -1,7 +1,7 @@
 ---
 type: location
 icon: LiMapPin
-portrait: "[[location-name.png]]"
+portrait: "[[assets/images/locations/location-name.png]]"
 status: draft
 district:
 parent-location:

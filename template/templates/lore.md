@@ -1,7 +1,7 @@
 ---
 type: lore
 icon: LiScroll
-portrait: "[[lore-name.png]]"
+portrait: "[[assets/images/lore/lore-name.png]]"
 status: draft
 category:
 canon: true
